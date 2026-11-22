@@ -889,7 +889,10 @@ function renderLatest(){
 const PALETTE = [["#FFB088","#FF7A6B"],["#F4C96B","#E89B2F"],["#C9B6F2","#8E7BD8"],["#FFC27A","#F08A3C"],["#AEB7C2","#6E7B8A"],["#9FD6A6","#4FA85F"],["#8FD6CC","#36A89A"],["#F7A8C4","#E86B9B"]];
 function colorFor(name){ let h=0; for(const ch of String(name)) h=(h*31+ch.charCodeAt(0))>>>0; return PALETTE[h%PALETTE.length]; }
 
-function parseCSV(text){
+// Parse the sheet CSV into objects. `key` is a column we expect in the header
+// row, so we can skip any instructions/notes rows the sheet keeps above the
+// headers (Ito's template puts guidance there) and find the real header row.
+function parseCSV(text, key){
   if(!text) return [];
   const rows=[]; let row=[], field="", q=false;
   for(let i=0;i<text.length;i++){
@@ -904,8 +907,19 @@ function parseCSV(text){
   }
   if(field!=="" || row.length){ row.push(field); rows.push(row); }
   if(!rows.length) return [];
-  const headers = rows[0].map(h=>h.trim());
-  return rows.slice(1)
+  let hi = 0;
+  if(key){
+    const k = key.toLowerCase();
+    const found = rows.findIndex(r => r.some(c => c.trim().toLowerCase() === k));
+    if(found >= 0) hi = found;
+  }
+  const headers = rows[hi].map(h=>h.trim());
+  // If the date column header got instructions glued onto it, recover it.
+  if(key && !headers.includes("date")){
+    const di = headers.findIndex(h => /\bdate\b/i.test(h));
+    if(di >= 0) headers[di] = "date";
+  }
+  return rows.slice(hi+1)
     .filter(r=>r.some(x=>x!==""))
     .map(r=>{ const o={}; headers.forEach((h,idx)=>o[h]=(r[idx]||"").trim()); return o; });
 }
@@ -953,11 +967,11 @@ async function loadData(){
     const r = await fetch("/api/data", { cache:"no-store" });
     if(!r.ok) return;
     const j = await r.json();
-    const cats = parseCSV(j.cats).map(rowToCat).filter(c=>c.name && c.status!=="hidden" && c.status!=="gone");
+    const cats = parseCSV(j.cats, "name").map(rowToCat).filter(c=>c.name && c.status!=="hidden" && c.status!=="gone");
     if(cats.length) CATS = cats;
-    const L = ledgerFrom(parseCSV(j.ledger));
+    const L = ledgerFrom(parseCSV(j.ledger, "direction"));
     if(L) LEDGER = L;
-    const posts = parseCSV(j.posts||"").map(rowToPost).filter(p=>p.img||p.caption.en||p.caption.ja);
+    const posts = parseCSV(j.posts||"", "image_url").map(rowToPost).filter(p=>p.img||p.caption.en||p.caption.ja);
     if(posts.length) POSTS = posts;
     if(cats.length || L || posts.length) render();
   }catch(_){ /* no worker (local preview) or sheet empty: keep the sample data */ }
