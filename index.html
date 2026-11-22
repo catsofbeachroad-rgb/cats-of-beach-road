@@ -725,10 +725,12 @@ function catCard(c, dupe){
     ? `background-image:url('${c.photo}'); background-size:cover; background-position:center`
     : `background:linear-gradient(135deg,${c.color[0]},${c.color[1]})`;
   const age = tr(c.age);
+  // Show the Japanese name on the JA toggle, falling back to the English name.
+  const dn = (lang==="ja" && c.name_ja) ? c.name_ja : (c.name || c.name_ja || "");
   return `
     <article class="cat"${dupe?' aria-hidden="true"':''}>
-      <div class="avatar" style="${style}">${c.photo?"":(c.name[0]||"")}</div>
-      <h3>${c.name} ${age?`<span class="age">${age}</span>`:""}</h3>
+      <div class="avatar" style="${style}">${c.photo?"":(dn[0]||"")}</div>
+      <h3>${dn} ${age?`<span class="age">${age}</span>`:""}</h3>
       <div class="trait">${tr(c.trait)}</div>
       <div class="triv">${tr(c.triv)}</div>
     </article>`;
@@ -928,6 +930,7 @@ function rowToCat(o){
   const digits = String(o.age||"").replace(/[^0-9]/g,"");
   return {
     name: o.name||"",
+    name_ja: o.name_ja||"",
     photo: o.photo_url||"",
     color: colorFor(o.name||"?"),
     age: digits ? {en:"~"+digits+" yrs", ja:"約"+digits+"歳"} : {en:"",ja:""},
