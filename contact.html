@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact — Cats of Beach Road</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#FFF7F2; --surface:#FFFFFF; --surface-2:#FFF0E9; --ink:#2B2A33; --muted:#6F6A75; --line:#F1E4DC;
+    --primary:#FF5C57; --primary-strong:#E8433E; --ok:#2BA84A; --radius:14px;
+    --font-display:"Fredoka", system-ui, sans-serif;
+    --font-body:"Nunito","Noto Sans JP", system-ui, sans-serif;
+    color-scheme: light;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg); color:var(--ink); font-family:var(--font-body); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:620px; margin:0 auto; padding:0 20px}
+  a{color:var(--primary)}
+  h1{font-family:var(--font-display); font-weight:700; font-size:2rem; margin:0 0 6px}
+  .brand{display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:700; font-size:1.05rem; text-decoration:none; color:var(--ink)}
+  .brand .paw{width:26px; height:26px}
+  header{border-bottom:1px solid var(--line); background:var(--surface)}
+  header .wrap{display:flex; align-items:center; justify-content:space-between; height:62px; max-width:760px}
+  .back{font-family:var(--font-display); font-weight:600; font-size:.95rem; text-decoration:none; color:var(--muted)}
+  main{padding:40px 0 60px}
+  .lede{color:var(--muted); margin:0 0 24px}
+  form{display:grid; gap:16px}
+  label{display:block; font-weight:600; font-size:.95rem}
+  .req{color:var(--primary)}
+  input, select, textarea{width:100%; margin-top:6px; font-family:var(--font-body); font-size:1rem; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:11px 13px}
+  textarea{min-height:130px; resize:vertical}
+  input:focus, select:focus, textarea:focus{outline:2px solid var(--primary); outline-offset:1px; border-color:var(--primary)}
+  .agree{display:flex; align-items:flex-start; gap:10px; font-weight:500; font-size:.92rem; color:var(--muted)}
+  .agree input{width:auto; margin-top:3px; flex:0 0 auto}
+  button{font-family:var(--font-display); font-weight:600; font-size:1rem; cursor:pointer; border:0; border-radius:999px; padding:13px 22px; background:var(--primary); color:#fff; transition:background .12s}
+  button:hover{background:var(--primary-strong)}
+  .msg{font-weight:600; font-size:.95rem}
+  .msg.ok{color:var(--ok)}
+  .msg.err{color:var(--primary-strong)}
+  .hint{background:var(--surface-2); border-radius:12px; padding:12px 16px; color:var(--muted); font-size:.88rem}
+  footer{border-top:1px solid var(--line); padding:24px 0 40px; color:var(--muted); font-size:.9rem}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg class="paw" viewBox="0 0 48 48" aria-hidden="true"><g fill="var(--primary)"><ellipse cx="24" cy="31" rx="11" ry="9"/><circle cx="13" cy="19" r="4.3"/><circle cx="20" cy="13" r="4.3"/><circle cx="28" cy="13" r="4.3"/><circle cx="35" cy="19" r="4.3"/></g></svg>
+      Cats of Beach Road
+    </a>
+    <a class="back" href="index.html">&larr; Home</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>Contact / お問い合わせ</h1>
+    <p class="lede">Questions about the cats, adopting, helping out, or anything else? Send us a note and we'll get back to you.<br>猫のこと、里親、お手伝いなど、お気軽にご連絡ください。</p>
+
+    <form id="contactForm">
+      <!-- SETUP: get a free key at https://web3forms.com (enter your email, they send a key), then paste it below. -->
+      <input type="hidden" name="access_key" value="YOUR-WEB3FORMS-KEY" />
+      <input type="hidden" name="subject" value="Cats of Beach Road — new enquiry" />
+      <input type="hidden" name="from_name" value="Cats of Beach Road website" />
+
+      <div>
+        <label for="f-name">Name / 氏名 <span class="req">*</span></label>
+        <input id="f-name" name="name" required />
+      </div>
+      <div>
+        <label for="f-email">Email / メールアドレス <span class="req">*</span></label>
+        <input id="f-email" type="email" name="email" required />
+      </div>
+      <div>
+        <label for="f-phone">Phone / 電話番号</label>
+        <input id="f-phone" name="phone" />
+      </div>
+      <div>
+        <label for="f-type">Type / お問い合わせ種別 <span class="req">*</span></label>
+        <select id="f-type" name="type" required>
+          <option value="">Please choose / ご選択ください</option>
+          <option>Adopting a cat / 里親について</option>
+          <option>Volunteering or helping / ボランティア・お手伝い</option>
+          <option>Donations and sponsorship / 寄付・スポンサー</option>
+          <option>A cat that needs help / 助けが必要な猫</option>
+          <option>Media or interview / 取材・メディア</option>
+          <option>Other / その他</option>
+        </select>
+      </div>
+      <div>
+        <label for="f-msg">Message / お問い合わせ内容 <span class="req">*</span></label>
+        <textarea id="f-msg" name="message" required></textarea>
+      </div>
+      <label class="agree">
+        <input type="checkbox" required />
+        <span>I agree to the <a href="privacy.html">Privacy Policy</a> / <a href="privacy.html">プライバシーポリシー</a>に同意します <span class="req">*</span></span>
+      </label>
+      <div>
+        <button type="submit">Send / 送信</button>
+      </div>
+      <div id="formMsg" class="msg" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">Cats of Beach Road</div>
+</footer>
+
+<script>
+  const form = document.getElementById("contactForm");
+  const msg = document.getElementById("formMsg");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const key = form.querySelector('[name=access_key]').value;
+    if (!key || key.indexOf("YOUR-") === 0) {
+      msg.textContent = "This form isn't connected yet. / このフォームはまだ設定されていません。";
+      msg.className = "msg err";
+      return;
+    }
+    msg.textContent = "Sending… / 送信中…";
+    msg.className = "msg";
+    const data = Object.fromEntries(new FormData(form).entries());
+    try {
+      const r = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const j = await r.json();
+      if (j.success) {
+        form.reset();
+        msg.textContent = "Thank you, we'll be in touch. / ありがとうございます。追ってご連絡します。";
+        msg.className = "msg ok";
+      } else {
+        msg.textContent = "Something went wrong. Please try again. / 送信に失敗しました。もう一度お試しください。";
+        msg.className = "msg err";
+      }
+    } catch (_) {
+      msg.textContent = "Something went wrong. Please try again. / 送信に失敗しました。";
+      msg.className = "msg err";
+    }
+  });
+</script>
+</body>
+</html>
