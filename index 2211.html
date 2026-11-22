@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cats of Beach Road</title>
+<meta name="description" content="A community cat project on Beach Road, Singapore. We feed, chip and care for the estate's cats, and show exactly where every dollar goes." />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Cats of Beach Road" />
+<meta property="og:title" content="Cats of Beach Road" />
+<meta property="og:description" content="A community cat project on Beach Road, Singapore. Cared for in the open, with every dollar shown." />
+<meta property="og:url" content="https://cats-of-beach-road.pages.dev/" />
+<meta property="og:image" content="https://cats-of-beach-road.pages.dev/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Cats of Beach Road" />
+<meta name="twitter:description" content="A community cat project on Beach Road, Singapore. Cared for in the open, with every dollar shown." />
+<meta name="twitter:image" content="https://cats-of-beach-road.pages.dev/og.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#FFF7F2; --surface:#FFFFFF; --surface-2:#FFF0E9;
+    --ink:#2B2A33; --muted:#6F6A75; --line:#F1E4DC;
+    --primary:#FF5C57; --primary-strong:#E8433E; --on-primary:#FFFFFF;
+    --accent:#14B4A4; --ok:#2BA84A; --warn:#E6912F;
+    --radius:18px; --radius-lg:26px;
+    --shadow:0 10px 30px rgba(43,42,51,.08); --shadow-sm:0 4px 14px rgba(43,42,51,.07);
+    --font-display:"Fredoka", system-ui, sans-serif;
+    --font-body:"Nunito", "Noto Sans JP", system-ui, -apple-system, sans-serif;
+    --maxw:1120px;
+    color-scheme: light;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg); color:var(--ink); font-family:var(--font-body); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased}
+  :root[lang="ja"] body{font-family:"Noto Sans JP","Nunito",system-ui,sans-serif}
+  h1,h2,h3,.display{font-family:var(--font-display); font-weight:600; line-height:1.15; text-wrap:balance; margin:0}
+  :root[lang="ja"] h1, :root[lang="ja"] h2, :root[lang="ja"] h3{font-family:"Noto Sans JP","Fredoka",sans-serif; font-weight:700}
+  a{color:inherit}
+  img{max-width:100%}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+  .tnum{font-variant-numeric:tabular-nums}
+  .muted{color:var(--muted)}
+  :focus-visible{outline:3px solid var(--accent); outline-offset:2px; border-radius:8px}
+
+  .btn{display:inline-flex; align-items:center; gap:8px; cursor:pointer; font-family:var(--font-display); font-weight:600; font-size:1rem; border:0; border-radius:999px; padding:12px 22px; text-decoration:none; transition:transform .12s ease, background .12s ease}
+  .btn:hover{transform:translateY(-1px)}
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:var(--primary); color:var(--on-primary); box-shadow:var(--shadow-sm)}
+  .btn-primary:hover{background:var(--primary-strong)}
+  .btn-ghost{background:var(--surface-2); color:var(--ink)}
+  .btn-ghost:hover{background:var(--line)}
+  .btn-sm{padding:9px 16px; font-size:.95rem}
+  .chip{display:inline-flex; align-items:center; gap:6px; font-family:var(--font-display); font-weight:600; font-size:.78rem; padding:4px 11px; border-radius:999px; background:var(--surface-2); color:var(--muted)}
+  .chip.open{background:color-mix(in srgb, var(--warn) 18%, transparent); color:var(--warn)}
+  .chip.resolved{background:color-mix(in srgb, var(--ok) 18%, transparent); color:var(--ok)}
+  .dot{width:7px; height:7px; border-radius:50%; background:currentColor}
+
+  header.nav{position:sticky; top:0; z-index:50; background:color-mix(in srgb, var(--bg) 86%, transparent); backdrop-filter:saturate(1.2) blur(10px); border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex; align-items:center; gap:16px; height:66px}
+  .brand{display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:700; font-size:1.1rem; text-decoration:none; white-space:nowrap}
+  .brand .paw{width:28px; height:28px; flex:0 0 auto}
+  .nav-links{display:flex; gap:4px}
+  .nav-links a{font-family:var(--font-display); font-weight:500; text-decoration:none; color:var(--muted); padding:8px 11px; border-radius:999px; white-space:nowrap}
+  .nav-links a:hover{color:var(--ink); background:var(--surface-2)}
+  .nav-cta{white-space:nowrap}
+  .nav-right{display:flex; align-items:center; gap:8px; margin-left:auto}
+  .lang{display:inline-flex; background:var(--surface-2); border-radius:999px; padding:3px}
+  .lang button{border:0; background:transparent; cursor:pointer; font-family:var(--font-display); font-weight:600; font-size:.85rem; color:var(--muted); padding:5px 10px; border-radius:999px; white-space:nowrap}
+  .lang button.on{background:var(--surface); color:var(--ink); box-shadow:var(--shadow-sm)}
+  .nav-toggle{display:none; background:var(--surface-2); border:0; color:var(--ink); width:40px; height:40px; border-radius:50%; cursor:pointer; font-size:1.15rem; place-items:center; flex:0 0 auto}
+  .mobile-menu{display:none; flex-direction:column; gap:4px; padding:8px 20px 16px}
+  .mobile-menu a{font-family:var(--font-display); font-weight:600; text-decoration:none; color:var(--ink); padding:12px 12px; border-radius:12px}
+  .mobile-menu a:hover{background:var(--surface-2)}
+  .mobile-menu .btn{justify-content:center; margin-top:6px}
+  .to-top{position:fixed; right:20px; bottom:20px; width:46px; height:46px; border-radius:50%; border:0; background:var(--primary); color:var(--on-primary); font-size:1.25rem; cursor:pointer; box-shadow:var(--shadow); display:grid; place-items:center; opacity:0; transform:translateY(12px); pointer-events:none; transition:opacity .25s ease, transform .25s ease; z-index:80}
+  .to-top.show{opacity:1; transform:translateY(0); pointer-events:auto}
+  img{-webkit-user-drag:none; user-select:none; -webkit-user-select:none}
+  @media (max-width:860px){ .nav-links{display:none} .nav-cta{display:none} .nav-toggle{display:inline-grid} .mobile-menu.open{display:flex} }
+
+  .hero{position:relative; overflow:hidden; min-height:min(82vh,660px); display:flex; align-items:center;
+    background:
+      radial-gradient(1100px 560px at 18% 12%, color-mix(in srgb,var(--primary) 20%, transparent), transparent 60%),
+      radial-gradient(900px 520px at 88% 26%, color-mix(in srgb,var(--accent) 20%, transparent), transparent 58%),
+      var(--bg);}
+  .hero-media{position:absolute; inset:0; z-index:0}
+  .hero-media video{width:100%; height:100%; object-fit:cover; display:block}
+  .hero-scrim{position:absolute; inset:0; z-index:1; display:none; background:linear-gradient(180deg, rgba(18,14,20,.25), rgba(18,14,20,.55))}
+  .hero.has-media .hero-scrim{display:block}
+  .hero-inner{position:relative; z-index:2; width:100%; padding:72px 20px}
+  .hero h1{font-size:clamp(2.1rem,5.2vw,3.5rem); max-width:16ch}
+  .hero .lede{font-size:1.15rem; color:var(--muted); margin:18px 0 26px; max-width:46ch}
+  .hero-ctas{display:flex; gap:12px; flex-wrap:wrap}
+  .stats{display:flex; gap:26px; margin-top:30px; flex-wrap:wrap}
+  .stat .n{font-family:var(--font-display); font-weight:700; font-size:1.7rem}
+  .stat .l{color:var(--muted); font-size:.92rem}
+  .hero.has-media{color:#fff}
+  .hero.has-media .lede, .hero.has-media .stat .l{color:rgba(255,255,255,.9)}
+  .hero.has-media .btn-ghost{background:rgba(255,255,255,.18); color:#fff}
+  .hero.has-media .btn-ghost:hover{background:rgba(255,255,255,.3)}
+  .scroll-cue{position:absolute; left:50%; bottom:16px; z-index:2; transform:translateX(-50%); width:40px; height:40px; border-radius:50%; display:grid; place-items:center; text-decoration:none; color:inherit; font-size:1.1rem; background:color-mix(in srgb,var(--surface) 72%, transparent); box-shadow:var(--shadow-sm); animation:cueBounce 1.8s ease-in-out infinite}
+  .hero.has-media .scroll-cue{background:rgba(255,255,255,.22); color:#fff}
+  @keyframes cueBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(5px)}}
+  @media (max-width:820px){
+    .hero{min-height:min(78vh,560px)}
+    .hero-inner{padding:52px 20px; text-align:center}
+    .hero h1{max-width:none}
+    .hero .lede{margin-left:auto; margin-right:auto}
+    .hero-ctas, .stats{justify-content:center}
+  }
+
+  section{padding:40px 0}
+  .sec-head{margin-bottom:22px}
+  .sec-head h2{font-size:clamp(1.5rem,3.4vw,2.1rem)}
+  .eyebrow{font-family:var(--font-display); font-weight:600; letter-spacing:.04em; text-transform:uppercase; font-size:.78rem; color:var(--primary)}
+  .sec-head p{color:var(--muted); margin:6px 0 0; max-width:56ch}
+
+  .about-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+  .about-card{background:var(--surface); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow-sm)}
+  .about-card .ic{width:46px; height:46px; border-radius:14px; display:grid; place-items:center; margin-bottom:14px}
+  .about-card .ic svg{width:24px; height:24px}
+  .about-card h3{font-size:1.15rem; margin-bottom:6px}
+  .about-card p{color:var(--muted); font-size:.95rem; margin:0}
+  @media (max-width:760px){ .about-grid{grid-template-columns:1fr} }
+
+  .org-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+  .org-card{background:var(--surface); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow-sm)}
+  .org-card h3{font-size:1.1rem; margin-bottom:8px}
+  .org-card p{color:var(--muted); font-size:.95rem; margin:0}
+  .org-who{display:flex; gap:18px; align-items:center; margin-top:18px; background:var(--surface-2); border-radius:var(--radius); padding:20px 22px}
+  .org-avatar{flex:0 0 auto; width:56px; height:56px; border-radius:50%; display:grid; place-items:center; background:linear-gradient(135deg,var(--primary),var(--accent))}
+  .org-avatar svg{width:30px; height:30px}
+  .org-name{font-family:var(--font-display); font-weight:700; font-size:1.05rem}
+  .org-role{color:var(--muted); font-size:.85rem; font-weight:600; margin-bottom:4px}
+  .org-who-text p{margin:0; color:var(--muted); font-size:.95rem}
+  @media (max-width:760px){ .org-grid{grid-template-columns:1fr} .org-who{flex-direction:column; align-items:flex-start} }
+  .foot-ig{display:inline-flex; align-items:center; gap:7px}
+  .foot-ig .ico{flex:0 0 auto}
+  .follow-band{text-align:center; background:color-mix(in srgb,var(--primary) 8%, var(--surface)); border-radius:var(--radius-lg); padding:40px 28px}
+  .follow-ic{width:60px; height:60px; border-radius:18px; display:grid; place-items:center; margin:0 auto 16px; background:linear-gradient(135deg,var(--primary),var(--accent)); color:#fff}
+  .follow-ic svg{width:30px; height:30px}
+  .follow-band h2{font-size:clamp(1.4rem,3vw,1.9rem)}
+  .follow-band p{color:var(--muted); max-width:44ch; margin:10px auto 20px}
+  .share{margin-top:24px; display:flex; flex-direction:column; align-items:center; gap:10px}
+  .share-label{font-weight:600; color:var(--muted); font-size:.9rem}
+  .share-btns{display:flex; gap:10px}
+  .sbtn{width:44px; height:44px; border-radius:50%; border:0; cursor:pointer; background:var(--surface); color:var(--ink); box-shadow:var(--shadow-sm); display:grid; place-items:center; transition:transform .12s ease, background .12s ease}
+  .sbtn:hover{transform:translateY(-2px); background:var(--surface-2)}
+  .sbtn svg{width:20px; height:20px}
+  .faq{max-width:760px}
+  .faq details{background:var(--surface); border-radius:var(--radius); box-shadow:var(--shadow-sm); margin-bottom:12px; overflow:hidden}
+  .faq summary{list-style:none; cursor:pointer; padding:18px 20px; font-family:var(--font-display); font-weight:600; font-size:1.05rem; display:flex; justify-content:space-between; align-items:center; gap:14px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+"; color:var(--primary); font-weight:700; font-size:1.4rem; line-height:1; flex:0 0 auto}
+  .faq details[open] summary::after{content:"\2013"}
+  .faq .faq-a{padding:0 20px 18px; color:var(--muted); margin:0}
+  .latest-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
+  .post{background:var(--surface); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm); text-decoration:none; color:inherit; display:flex; flex-direction:column}
+  a.post:hover{transform:translateY(-2px); transition:transform .15s ease}
+  .post-img{aspect-ratio:1/1; width:100%}
+  .post-body{padding:14px 16px}
+  .post-cap{margin:0 0 8px; font-size:.95rem; line-height:1.45}
+  .post-date{color:var(--muted); font-size:.82rem; font-weight:600}
+  @media (max-width:860px){ .latest-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:460px){ .latest-grid{grid-template-columns:1fr} }
+
+  .feed-band{display:grid; grid-template-columns:1.6fr .9fr; gap:28px; align-items:center; background:color-mix(in srgb,var(--accent) 10%, var(--surface)); border-radius:var(--radius-lg); padding:30px 34px}
+  .feed-band h2{font-size:clamp(1.5rem,3vw,2rem)}
+  .feed-text p{color:var(--muted); margin:10px 0}
+  .feed-band .pack{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0}
+  .feed-band .pack span{background:var(--surface); border-radius:999px; padding:5px 12px; font-size:.86rem; font-weight:600}
+  .feed-cta{text-align:center; background:var(--surface); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow-sm)}
+  .feed-cta .price{font-family:var(--font-display); font-weight:700; font-size:2.6rem}
+  .feed-cta .sub{color:var(--muted); font-size:.9rem; margin-bottom:16px}
+  .feed-cta .btn{width:100%; justify-content:center}
+  @media (max-width:760px){ .feed-band{grid-template-columns:1fr; padding:24px} }
+
+  .cat-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(210px,1fr)); gap:18px}
+  .cat{background:var(--surface); border-radius:var(--radius); padding:12px; box-shadow:var(--shadow-sm)}
+  .cat .avatar{height:150px; border-radius:14px; display:grid; place-items:center; font-family:var(--font-display); font-weight:700; font-size:2.3rem; color:#fff}
+  .cat h3{font-size:1.15rem; margin-top:12px; display:flex; align-items:center; gap:8px; justify-content:space-between}
+  .age{font-family:var(--font-body); font-weight:600; font-size:.8rem; color:var(--muted); background:var(--surface-2); padding:2px 9px; border-radius:999px; white-space:nowrap}
+  .cat .trait{color:var(--ink); margin:6px 0 2px; font-weight:600}
+  .cat .triv{color:var(--muted); font-size:.92rem}
+  .shelf-wrap{position:relative}
+  .cat-viewport{overflow:hidden; padding:4px 0 10px}
+  .cat-track{display:flex; gap:18px; will-change:transform; user-select:none}
+  .cat-track > .cat{flex:0 0 220px; width:220px}
+  .shelf-btn{position:absolute; top:46%; transform:translateY(-50%); z-index:5; width:40px; height:40px; border-radius:50%; border:0; background:var(--surface); color:var(--ink); box-shadow:var(--shadow); cursor:pointer; font-size:1.4rem; line-height:1; display:grid; place-items:center}
+  .shelf-btn.prev{left:-6px}
+  .shelf-btn.next{right:-6px}
+  .shelf-btn:hover{background:var(--surface-2)}
+
+  .cases{display:grid; gap:20px}
+  .case{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); box-shadow:var(--shadow); overflow:hidden}
+  .case-top{display:grid; grid-template-columns:200px 1fr}
+  .case-cover{min-height:180px; display:grid; place-items:center; color:#fff; font-family:var(--font-display); font-weight:700; font-size:2rem}
+  .case-body{padding:20px 22px}
+  .case-body .row1{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:8px}
+  .case-body h3{font-size:1.35rem}
+  .case-body .who{color:var(--muted); font-weight:600}
+  .case-blurb{margin:10px 0 14px}
+  .progress{height:12px; background:var(--surface-2); border-radius:999px; overflow:hidden}
+  .progress > span{display:block; height:100%; background:var(--primary); border-radius:999px}
+  .prog-meta{display:flex; justify-content:space-between; font-size:.9rem; margin-top:7px; font-weight:600}
+  .case-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+  .case-full{border-top:1px solid var(--line); padding:0 22px; max-height:0; overflow:hidden; transition:max-height .35s ease, padding .35s ease}
+  .case-full.open{max-height:1600px; padding:18px 22px 24px}
+  .case-full h4{font-family:var(--font-display); font-size:1.02rem; margin:16px 0 8px}
+  .case-full p{margin:0 0 12px}
+  .timeline{list-style:none; margin:0; padding:0; border-left:2px solid var(--line)}
+  .timeline li{position:relative; padding:0 0 16px 20px}
+  .timeline li::before{content:""; position:absolute; left:-7px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--primary); border:3px solid var(--surface)}
+  .timeline .d{font-family:var(--font-display); font-weight:600; font-size:.85rem; color:var(--muted)}
+  table.spend{width:100%; border-collapse:collapse; font-size:.94rem}
+  table.spend th,table.spend td{text-align:left; padding:9px 8px; border-bottom:1px solid var(--line)}
+  table.spend td.amt,table.spend th.amt{text-align:right}
+  table.spend tfoot td{font-weight:700; border-bottom:0}
+  @media (max-width:640px){ .case-top{grid-template-columns:1fr} .case-cover{min-height:130px} }
+
+  .money-wrap{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); padding:24px; box-shadow:var(--shadow)}
+  .tiles{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+  .tile{background:var(--surface-2); border-radius:var(--radius); padding:18px}
+  .tile .k{color:var(--muted); font-size:.9rem; font-weight:600}
+  .tile .v{font-family:var(--font-display); font-weight:700; font-size:2rem; margin-top:4px}
+  .tile.accent .v{color:var(--accent)}
+  .split{margin-top:20px}
+  .split .bar{height:14px; border-radius:999px; overflow:hidden; display:flex; background:var(--surface-2)}
+  .split .legend{display:flex; gap:18px; margin-top:10px; font-size:.9rem; font-weight:600}
+  .split .legend .sw{width:12px; height:12px; border-radius:4px; display:inline-block; margin-right:6px; vertical-align:-1px}
+  .recent{margin-top:20px; display:grid; gap:2px}
+  .recent .r{display:grid; grid-template-columns:92px 1fr auto; gap:12px; padding:10px 6px; border-bottom:1px solid var(--line); align-items:center}
+  .recent .r .d{color:var(--muted); font-size:.85rem; font-weight:600}
+  .recent .r .a{font-weight:700}
+  .note{background:var(--surface-2); border-radius:14px; padding:12px 16px; color:var(--muted); font-size:.92rem; margin-top:18px}
+  .empty-ledger{color:var(--muted); font-weight:600; padding:16px 6px}
+  @media (max-width:640px){ .tiles{grid-template-columns:1fr} }
+
+  .support-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:18px}
+  .opt{background:var(--surface); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow-sm); display:flex; flex-direction:column}
+  .opt h3{font-size:1.2rem}
+  .opt .price{font-family:var(--font-display); font-weight:700; font-size:1.6rem; margin:8px 0}
+  .opt p{color:var(--muted); font-size:.95rem; margin:0 0 14px}
+  .opt .fees{margin:12px 0 16px; display:grid; gap:5px}
+  .opt .fee-row{display:flex; justify-content:space-between; align-items:baseline; font-size:.95rem; color:var(--ink)}
+  .opt .fee-row b{font-weight:700; font-variant-numeric:tabular-nums}
+  .opt .fee-note{color:var(--muted); font-size:.82rem; margin-top:2px}
+  .opt .btn{margin-top:auto; justify-content:center}
+  .opt.campaign{background:color-mix(in srgb,var(--accent) 8%, var(--surface))}
+  .toast{position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(140%); opacity:0; visibility:hidden; pointer-events:none; background:var(--ink); color:var(--bg); padding:12px 20px; border-radius:999px; font-weight:600; box-shadow:var(--shadow); transition:transform .3s ease, opacity .3s ease, visibility .3s ease; z-index:90; max-width:90vw; text-align:center}
+  .toast.show{transform:translateX(-50%) translateY(0); opacity:1; visibility:visible}
+
+  .dir-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:18px}
+  .dir{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow-sm); display:flex; flex-direction:column}
+  .dir .tag{align-self:flex-start; font-family:var(--font-display); font-weight:600; font-size:.74rem; padding:3px 10px; border-radius:999px; background:var(--surface-2); color:var(--muted); margin-bottom:10px}
+  .dir h3{font-size:1.12rem}
+  .dir p{color:var(--muted); font-size:.95rem; margin:8px 0 14px}
+  .dir .dirlink{margin-top:auto; font-family:var(--font-display); font-weight:600; font-size:.95rem; color:var(--primary-strong); text-decoration:none; display:inline-flex; align-items:center; gap:6px}
+  .dir .dirlink:hover{text-decoration:underline}
+
+  footer{border-top:1px solid var(--line); margin-top:30px; padding:34px 0 50px; color:var(--muted)}
+  .foot-grid{display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap}
+  footer a{font-weight:600; text-decoration:none; color:var(--ink)}
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important; animation:none !important} }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <svg class="paw" viewBox="0 0 48 48" aria-hidden="true"><g fill="var(--primary)"><ellipse cx="24" cy="31" rx="11" ry="9"/><circle cx="13" cy="19" r="4.3"/><circle cx="20" cy="13" r="4.3"/><circle cx="28" cy="13" r="4.3"/><circle cx="35" cy="19" r="4.3"/></g></svg>
+      Cats of Beach Road
+    </a>
+    <nav class="nav-links">
+      <a href="#org" data-i18n="navOrg">About us</a>
+      <a href="#cats" data-i18n="navCats">Cats</a>
+      <a href="#feed" data-i18n="navFeed">Feed a cat</a>
+      <a href="#money" data-i18n="navMoney">Where the money goes</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#support" class="btn btn-primary btn-sm nav-cta" data-i18n="navSupport">Support the cats</a>
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="en" class="on" aria-pressed="true">EN</button>
+        <button data-lang="ja" aria-pressed="false">日本語</button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" data-i18n="navAbout">What we do</a>
+    <a href="#org" data-i18n="navOrg">About us</a>
+    <a href="#cats" data-i18n="navCats">Cats</a>
+    <a href="#feed" data-i18n="navFeed">Feed a cat</a>
+    <a href="#money" data-i18n="navMoney">Where the money goes</a>
+    <a href="#support" class="btn btn-primary" data-i18n="navSupport">Support the cats</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" id="hero">
+    <div class="hero-media" id="heroMedia" aria-hidden="true"></div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <h1 data-i18n="heroTitle">The cats of Beach Road, looked after in the open.</h1>
+      <p class="lede" data-i18n="heroLede">Twenty-odd cats live in our estate.</p>
+      <div class="hero-ctas">
+        <a href="#support" class="btn btn-primary" data-i18n="heroCta1">Support the cats</a>
+        <a href="#cats" class="btn btn-ghost" data-i18n="heroCta2">Meet the cats</a>
+      </div>
+      <div class="stats" id="heroStats"></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-i18n="aboutTitle">What we do</h2>
+        <p data-i18n="aboutIntro">Three simple things, done consistently and shown in the open.</p>
+      </div>
+      <div class="about-grid" id="aboutGrid"></div>
+    </div>
+  </section>
+
+  <section id="org">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-i18n="orgTitle">About us</h2>
+        <p data-i18n="orgIntro">Who runs Cats of Beach Road, and why.</p>
+      </div>
+      <div class="org-grid">
+        <article class="org-card">
+          <h3 data-i18n="orgMissionT">Our mission</h3>
+          <p data-i18n="orgMissionB">Make sure every cat on Beach Road is fed, healthy and safe, and run it openly so the whole neighbourhood can trust where the money goes.</p>
+        </article>
+        <article class="org-card">
+          <h3 data-i18n="orgVisionT">Our vision</h3>
+          <p data-i18n="orgVisionB">A neighbourhood where community cats are cared for by the people who live alongside them, not feared or chased away.</p>
+        </article>
+        <article class="org-card">
+          <h3 data-i18n="orgWhyT">Why it matters</h3>
+          <p data-i18n="orgWhyB">These cats live here whether or not anyone looks after them. Steady feeding, sterilisation and vet care mean fewer kittens, healthier cats and a calmer estate for everyone.</p>
+        </article>
+      </div>
+      <div class="org-who">
+        <div class="org-avatar" aria-hidden="true"><svg viewBox="0 0 48 48"><g fill="#fff"><ellipse cx="24" cy="31" rx="11" ry="9"/><circle cx="13" cy="19" r="4.3"/><circle cx="20" cy="13" r="4.3"/><circle cx="28" cy="13" r="4.3"/><circle cx="35" cy="19" r="4.3"/></g></svg></div>
+        <div class="org-who-text">
+          <div class="org-name" data-i18n="orgName">[Your name]</div>
+          <div class="org-role" data-i18n="orgRole">Representative</div>
+          <p data-i18n="orgWhoB">Cats of Beach Road is run by a small group of volunteers who live in the estate and already feed and look after these cats day to day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cats">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-i18n="catsTitle">Meet the cats</h2>
+        <p data-i18n="catsIntro">Every cat has a name, an age and a personality.</p>
+      </div>
+      <div class="shelf-wrap">
+        <button class="shelf-btn prev" id="catPrev" aria-label="Previous">‹</button>
+        <div class="cat-viewport">
+          <div class="cat-track" id="catGrid"></div>
+        </div>
+        <button class="shelf-btn next" id="catNext" aria-label="Next">›</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="money">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-i18n="moneyTitle">Every dollar, accounted for</h2>
+        <p data-i18n="moneyIntro">We run at cost.</p>
+      </div>
+      <div class="money-wrap">
+        <div class="tiles" id="moneyTiles"></div>
+        <div class="split">
+          <div class="bar"><span id="barFood" style="background:var(--accent)"></span><span id="barVet" style="background:var(--primary)"></span></div>
+          <div class="legend">
+            <span><span class="sw" style="background:var(--accent)"></span><span data-i18n="legFood">Food</span> <b id="legFoodV" class="tnum"></b></span>
+            <span><span class="sw" style="background:var(--primary)"></span><span data-i18n="legVet">Vet</span> <b id="legVetV" class="tnum"></b></span>
+          </div>
+        </div>
+        <div class="recent" id="recent"></div>
+        <div class="note" id="moneyNote"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="support">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-i18n="supportTitle">Pick a way to help</h2>
+        <p data-i18n="supportIntro">PayNow is cheapest for local supporters.</p>
+      </div>
+      <div class="support-grid" id="supportGrid"></div>
+    </div>
+  </section>
+
+  <section id="feed">
+    <div class="wrap">
+      <div class="feed-band">
+        <div class="feed-text">
+          <h2 data-i18n="feedTitle">Come feed a cat</h2>
+          <p data-i18n="feedLead">Near Beach Road? This one is hands-on. For $3 you pick up a feeding pack at the shop downstairs and feed one of our cats yourself.</p>
+          <div class="pack">
+            <span data-i18n="feedP1">Dry food</span>
+            <span data-i18n="feedP2">Ciao Churu treat</span>
+            <span data-i18n="feedP3">Bag</span>
+            <span data-i18n="feedP4">Wipe</span>
+          </div>
+          <p data-i18n="feedNote">A lovely stop if you are visiting the neighbourhood. The cats are used to being fed, and most are friendly.</p>
+          <!-- TODO (later): add a "Some places we recommend" block here, a few nearby spots (hawker centre, cafes, things to see) for visitors who come to feed. -->
+        </div>
+        <div class="feed-cta">
+          <div class="price tnum">$3</div>
+          <div class="sub" data-i18n="feedSub">per pack</div>
+          <a href="#" class="btn btn-primary" data-demo data-i18n="feedBtn">Get a feeding pack</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-i18n="faqTitle">Questions</h2>
+        <p data-i18n="faqIntro">A few things people often ask.</p>
+      </div>
+      <div class="faq">
+        <details><summary data-i18n="faqQ1">Is this an official organisation?</summary><div class="faq-a" data-i18n="faqA1"></div></details>
+        <details><summary data-i18n="faqQ2">Where does my money go?</summary><div class="faq-a" data-i18n="faqA2"></div></details>
+        <details><summary data-i18n="faqQ3">Can I adopt a cat?</summary><div class="faq-a" data-i18n="faqA3"></div></details>
+        <details><summary data-i18n="faqQ4">Can I help in person?</summary><div class="faq-a" data-i18n="faqA4"></div></details>
+        <details><summary data-i18n="faqQ5">Do I get a receipt?</summary><div class="faq-a" data-i18n="faqA5"></div></details>
+        <details><summary data-i18n="faqQ6">Are the cats sterilised and microchipped?</summary><div class="faq-a" data-i18n="faqA6"></div></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="latest">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-i18n="latestTitle">Latest</h2>
+        <p data-i18n="latestIntro">Recent photos from the colony. More on Instagram.</p>
+      </div>
+      <div class="latest-grid" id="latestGrid"></div>
+    </div>
+  </section>
+
+  <section id="follow">
+    <div class="wrap">
+      <div class="follow-band">
+        <div class="follow-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></div>
+        <h2 data-i18n="followTitle">Follow us on Instagram</h2>
+        <p data-i18n="followLead">Daily photos and little updates of the Beach Road cats. Come say hi.</p>
+        <a id="followBtn" href="#" data-demo class="btn btn-primary" data-i18n="followBtn">Follow us</a>
+        <div class="share">
+          <span class="share-label" data-i18n="shareLabel">Share this page</span>
+          <div class="share-btns">
+            <button class="sbtn" data-share="x" aria-label="Share on X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.5 8.6L23.3 22h-6.8l-5.3-7-6.1 7H2l8-9.2L1.5 2h7l4.8 6.4L18.9 2Zm-1.2 18h1.9L7.4 4H5.4l12.3 16Z"/></svg></button>
+            <button class="sbtn" data-share="wa" aria-label="Share on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.9.9-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8.9-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-.9-1.1-1.2-1.7-.1-.2 0-.4.1-.5l.4-.4c.1-.1.2-.3.2-.4.1-.1 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.7.7-1 1.5-1 2.4.1 1 .5 2 1.1 2.8 1.1 1.7 2.6 2.9 4.4 3.5.5.2 1 .3 1.5.3.6 0 1.1-.2 1.5-.6.3-.3.5-.7.6-1.1.1-.2.1-.4 0-.5Z"/></svg></button>
+            <button class="sbtn" data-share="ig" aria-label="Copy link for Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <div class="brand" style="margin-bottom:8px"><svg class="paw" viewBox="0 0 48 48" aria-hidden="true"><g fill="var(--primary)"><ellipse cx="24" cy="31" rx="11" ry="9"/><circle cx="13" cy="19" r="4.3"/><circle cx="20" cy="13" r="4.3"/><circle cx="28" cy="13" r="4.3"/><circle cx="35" cy="19" r="4.3"/></g></svg> Cats of Beach Road</div>
+    </div>
+    <div id="footLinks"></div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const UI = {
+  en:{
+    navCats:"Cats", navCases:"Cases", navMoney:"Where the money goes", navVisit:"Visit", navSupport:"Support the cats",
+    menu:"Menu", backTop:"Back to top", prevCats:"Previous", nextCats:"Next", scrollDown:"See the cats",
+    navAbout:"What we do", aboutTitle:"What we do", aboutIntro:"Three simple things, done consistently and shown in the open.",
+    navOrg:"About us", orgTitle:"About us", orgIntro:"Who runs Cats of Beach Road, and why.",
+    orgMissionT:"Our mission", orgMissionB:"Make sure every cat on Beach Road is fed, healthy and safe, and run it openly so the whole neighbourhood can trust where the money goes.",
+    orgVisionT:"Our vision", orgVisionB:"A neighbourhood where community cats are cared for by the people who live alongside them, not feared or chased away.",
+    orgWhyT:"Why it matters", orgWhyB:"These cats live here whether or not anyone looks after them. Steady feeding, sterilisation and vet care mean fewer kittens, healthier cats and a calmer estate for everyone.",
+    orgName:"[Your name]", orgRole:"Representative", orgWhoB:"Cats of Beach Road is run by a small group of volunteers who live in the estate and already feed and look after these cats day to day.",
+    followTitle:"Follow us on Instagram", followLead:"Daily photos and little updates of the Beach Road cats. Come say hi.", followBtn:"Follow us",
+    latestTitle:"Latest", latestIntro:"Recent photos and moments from the colony. More on Instagram.", footPrivacy:"Privacy policy",
+    shareLabel:"Share this page", shareCopied:"Link copied. Paste it into your Instagram story or DM.",
+    faqTitle:"Questions", faqIntro:"A few things people often ask.",
+    faqQ1:"Is this an official organisation?", faqA1:"We're a small group of volunteers who live on Beach Road and already look after these cats every day. We keep everything open: every dollar in and out is listed on this site.",
+    faqQ2:"Where does my money go?", faqA2:"Food, vet care, and trackers and collars for the cats. We run at cost, so after a few small listed running costs, every dollar goes to the cats. You can see it all in the money section.",
+    faqQ3:"Can I adopt a cat?", faqA3:"Some cats may be suited to a home; others are happiest living in the estate. Get in touch through the contact form and we'll talk it through.",
+    faqQ4:"Can I help in person?", faqA4:"Yes. You can come feed a cat with a $3 pack from the shop downstairs, or contact us about helping out.",
+    faqQ5:"Do I get a receipt?", faqA5:"HitPay sends a payment confirmation for every gift. We can't issue tax-deductible receipts yet, as that needs charity status, which we don't have.",
+    faqQ6:"Are the cats sterilised and microchipped?", faqA6:"Most of the cats are microchipped, and we sterilise through the community programme. It keeps the colony healthy and the numbers stable.",
+    navFeed:"Feed a cat", feedTitle:"Come feed a cat", feedLead:"Near Beach Road? This one is hands-on. For $3 you pick up a feeding pack at the shop downstairs and feed one of our cats yourself.", feedP1:"Dry food", feedP2:"Ciao Churu treat", feedP3:"Bag", feedP4:"Wipe", feedNote:"A lovely stop if you are visiting the neighbourhood. The cats are used to being fed, and most are friendly.", feedSub:"per pack", feedBtn:"Get a feeding pack",
+    heroEyebrow:"A community cat project",
+    heroTitle:"The cats of Beach Road, looked after in the open.",
+    heroLede:"Twenty-odd cats live in our estate. We feed them, chip them, get them to the vet when they need it, and we show you exactly where every dollar goes.",
+    heroCta1:"Support the cats", heroCta2:"Meet the cats",
+    statCats:"cats we look after", statRaised:"raised so far", statCaseOne:"open case", statCaseMany:"open cases",
+    catsEyebrow:"Our residents", catsTitle:"Meet the cats",
+    catsIntro:"Every cat has a name, an age and a personality. Profiles come straight from our sheet, so they stay up to date.",
+    casesEyebrow:"Where the money goes", casesTitle:"Open cases & updates",
+    casesIntro:"When a cat needs real care it becomes a case: a full update with the story, the costs, the receipts and what happens next. Open one to read it.",
+    caseOpen:"Open case", caseResolved:"Resolved", readUpdate:"Read the full update", hideUpdate:"Hide update",
+    raised:"raised", goal:"goal", whatHappened:"What happened, step by step", whatCost:"What it cost",
+    total:"Total", totalEst:"Total (incl. estimate)", receipt:"receipt",
+    moneyEyebrow:"Full transparency", moneyTitle:"Every dollar, accounted for",
+    moneyIntro:"We run at cost. Revenue covers a few small, listed running costs first, then everything goes to food and vet bills. These numbers are sums of our ledger.",
+    tileRaised:"Raised", tileSpent:"Spent on the cats", tilePool:"In the pool now", legFood:"Food", legVet:"Vet",
+    moneyNote:"We run at cost. A few small running costs (domain, registration, printing) come out first and are always listed here. Payment fees are shown at checkout for the method you pick.",
+    ledgerEmpty:"No entries yet. Every dollar in and out will show up here, starting with the first.",
+    seeLedger:"See the full ledger →",
+    supportEyebrow:"Help out", supportTitle:"Pick a way to help",
+    supportIntro:"These fund the cats' food, trackers and vet bills, and the feeders handle the feeding. PayNow is cheapest locally, cards work for everyone, and the fee is shown before you pay.",
+    payNow:"PayNow", card:"Card", inclFee:"(incl. fee)", youChoose:"You choose", donate:"Donate", choose:"Choose", campOf:"of",
+    visitEyebrow:"While you're here", visitTitle:"Visit Beach Road",
+    visitIntro:"A few good spots in the neighbourhood. Tap a card for directions.", getDirections:"Get directions →",
+    footRun:"Run at cost. After a few small listed costs, every dollar goes to the cats.",
+    footIG:"Instagram", footLedger:"The full ledger", footQ:"Questions?", footMsg:"Message us",
+    toast:"Demo — on the live site this opens HitPay or your real link."
+  },
+  ja:{
+    navCats:"猫たち", navCases:"ケース", navMoney:"お金の使い道", navVisit:"周辺案内", navSupport:"猫を支援",
+    menu:"メニュー", backTop:"上に戻る", prevCats:"前へ", nextCats:"次へ", scrollDown:"猫を見る",
+    navAbout:"活動について", aboutTitle:"私たちの活動", aboutIntro:"3つのことを、続けて、オープンにやっています。",
+    navOrg:"団体について", orgTitle:"私たちについて", orgIntro:"Cats of Beach Road を誰が、なぜ運営しているか。",
+    orgMissionT:"ミッション", orgMissionB:"ビーチロードのすべての猫が、きちんと食べ、健康で、安全に暮らせるように。そして、お金の使い道を誰もが信頼できるよう、すべてオープンに運営します。",
+    orgVisionT:"ビジョン", orgVisionB:"地域の猫たちが追い払われるのではなく、ともに暮らす人たちの手で大切にされる街へ。",
+    orgWhyT:"活動の意義", orgWhyB:"この猫たちは、誰かが世話をしてもしなくても、ここで暮らし続けます。継続的な餌やり、不妊手術、通院によって、子猫は減り、猫は健康になり、みんなにとって穏やかな団地になります。",
+    orgName:"［お名前］", orgRole:"代表", orgWhoB:"Cats of Beach Road は、この団地に住み、日頃からこの猫たちの世話をしている有志の小さなグループで運営しています。",
+    followTitle:"Instagramでフォロー", followLead:"ビーチロードの猫たちの写真や近況を、ほぼ毎日投稿します。ぜひのぞいてください。", followBtn:"フォローする",
+    latestTitle:"最近の様子", latestIntro:"群れの最近の写真と出来事。もっと見るならInstagramで。", footPrivacy:"プライバシーポリシー",
+    shareLabel:"このページをシェア", shareCopied:"リンクをコピーしました。Instagramのストーリーやメッセージに貼り付けてください。",
+    faqTitle:"よくある質問", faqIntro:"よく聞かれることをまとめました。",
+    faqQ1:"これは公式の団体ですか？", faqA1:"ビーチロードに住み、日頃からこの猫たちの世話をしている有志の小さなグループです。入ったお金も出たお金も、すべてこのサイトに記載して公開しています。",
+    faqQ2:"お金は何に使われますか？", faqA2:"猫たちの餌、通院、トラッカーと首輪です。原価で運営しているので、わずかな運営費のあとは、いただいたお金はすべて猫のために使います。「お金の使い道」ですべて見られます。",
+    faqQ3:"里親になれますか？", faqA3:"家庭に向いている子もいれば、団地で暮らすのがいちばん幸せな子もいます。お問い合わせフォームからご連絡いただければ、ご相談します。",
+    faqQ4:"手伝うことはできますか？", faqA4:"はい。階下の店で$3のパックを受け取って自分で餌やりを体験できますし、お手伝いについてはお問い合わせください。",
+    faqQ5:"領収書はもらえますか？", faqA5:"ご寄付ごとにHitPayから決済の確認が届きます。税控除用の正式な領収書は、チャリティ資格が必要で現状は発行できません。",
+    faqQ6:"不妊手術やマイクロチップはしていますか？", faqA6:"ほとんどの猫はマイクロチップ済みで、不妊手術は地域のプログラムで行っています。群れの健康を保ち、頭数を安定させるためです。",
+    navFeed:"餌やり体験", feedTitle:"猫に餌やり体験", feedLead:"ビーチロードの近くにいるなら、これは実際に体験できます。$3で階下の店で餌やりパックを受け取り、自分でうちの猫に餌をあげられます。", feedP1:"カリカリ", feedP2:"チャオちゅ〜る", feedP3:"袋", feedP4:"ウェットティッシュ", feedNote:"近所を訪れたときの立ち寄りにもぴったり。猫たちは餌やりに慣れていて、多くは人懐っこいです。", feedSub:"1パック", feedBtn:"餌やりパックを受け取る",
+    heroEyebrow:"地域猫プロジェクト",
+    heroTitle:"ビーチロードの猫たちを、オープンに見守る。",
+    heroLede:"団地には20匹ほどの猫がいます。餌やり、マイクロチップ、必要なときの通院まで行い、いただいたお金の使い道をすべてお見せします。",
+    heroCta1:"猫を支援", heroCta2:"猫たちを見る",
+    statCats:"世話している猫", statRaised:"これまでの寄付", statCaseOne:"進行中のケース", statCaseMany:"進行中のケース",
+    catsEyebrow:"うちの住人", catsTitle:"猫たちの紹介",
+    catsIntro:"どの猫にも名前、年齢、性格があります。プロフィールはシートから直接表示するので、常に最新です。",
+    casesEyebrow:"お金の使い道", casesTitle:"進行中のケースと更新",
+    casesIntro:"本格的なケアが必要になった猫は「ケース」になります。経緯、費用、領収書、次の予定をまとめて更新します。開いてご覧ください。",
+    caseOpen:"進行中", caseResolved:"解決済み", readUpdate:"更新を読む", hideUpdate:"閉じる",
+    raised:"集まった", goal:"目標", whatHappened:"これまでの経緯", whatCost:"かかった費用",
+    total:"合計", totalEst:"合計（見込み含む）", receipt:"領収書",
+    moneyEyebrow:"完全な透明性", moneyTitle:"一円まで明朗に",
+    moneyIntro:"原価で運営しています。収入はまず少額で明細化された運営費を賄い、残りはすべて餌代と病院代へ。これらの数字は台帳の合計です。",
+    tileRaised:"集まった額", tileSpent:"猫に使った額", tilePool:"現在のプール", legFood:"餌代", legVet:"病院代",
+    moneyNote:"原価で運営しています。ドメイン・登録・印刷などの少額の運営費を先に充て、必ずここに記載します。決済手数料は、選んだ方法に応じてチェックアウトで表示します。",
+    ledgerEmpty:"まだ記録はありません。最初の一件から、入ったお金も出たお金もすべてここに表示されます。",
+    seeLedger:"台帳をすべて見る →",
+    supportEyebrow:"手伝う", supportTitle:"支援の方法を選ぶ",
+    supportIntro:"猫たちの餌・トラッカー・病院代にあてる支援です。餌やりは世話人が行います。地元の方にはPayNowが最安、カードは誰でも使えます。手数料は支払い前に表示します。",
+    payNow:"PayNow", card:"カード", inclFee:"（手数料込み）", youChoose:"自由入力", donate:"寄付する", choose:"選ぶ", campOf:"／",
+    visitEyebrow:"せっかくなら", visitTitle:"ビーチロードを歩く",
+    visitIntro:"近隣のおすすめスポット。カードをタップで道順が開きます。", getDirections:"道順を見る →",
+    footRun:"原価で運営。わずかな明細費用のあと、すべて猫のために。",
+    footIG:"Instagram", footLedger:"台帳をすべて見る", footQ:"ご質問は", footMsg:"お問い合わせ",
+    toast:"デモ — 本番サイトではHitPayまたは実際のリンクが開きます。"
+  }
+};
+
+// ── Settings you can change without touching anything else ──
+const CONFIG = {
+  colonySize: 20,   // how many cats you look after, shown as "20+"
+  ledgerUrl: "",    // paste your view-only Google Sheet link here to turn on the "full ledger" link
+  igUrl: "",        // your Instagram link once it's ready
+  heroVideo: "",    // paste a hosted video URL (e.g. "hero.mp4") for a full-screen hero video
+  heroPoster: "",   // optional still image shown before the video plays or if it can't
+};
+
+let CATS = [
+  {name:"Mochi", color:["#FFB088","#FF7A6B"], age:{en:"~3 yrs",ja:"約3歳"}, trait:{en:"Chatty and bold",ja:"おしゃべりで大胆"}, triv:{en:"First to the feeding spot every morning.",ja:"毎朝いちばんに給餌場所へ。"}},
+  {name:"Biscuit", color:["#F4C96B","#E89B2F"], age:{en:"~5 yrs",ja:"約5歳"}, trait:{en:"Shy but sweet",ja:"内気だけど甘えん坊"}, triv:{en:"Will headbutt your ankle once she trusts you.",ja:"慣れると足首に頭をすりつけてくる。"}},
+  {name:"Tuxedo", color:["#C9B6F2","#8E7BD8"], age:{en:"~2 yrs",ja:"約2歳"}, trait:{en:"Dapper menace",ja:"めかしこんだ暴れん坊"}, triv:{en:"Sleeps on the blue motorbike seat.",ja:"青いバイクのシートで眠る。"}},
+  {name:"Ginger", color:["#FFC27A","#F08A3C"], age:{en:"~6 yrs",ja:"約6歳"}, trait:{en:"The elder statesman",ja:"長老格"}, triv:{en:"Runs the void deck. Everyone knows Ginger.",ja:"ヴォイドデッキの主。みんなジンジャーを知っている。"}},
+  {name:"Smokey", color:["#AEB7C2","#6E7B8A"], age:{en:"~4 yrs",ja:"約4歳"}, trait:{en:"Quiet watcher",ja:"物静かな見張り番"}, triv:{en:"Guards the bin area from pigeons.",ja:"ゴミ置き場を鳩から守る。"}},
+  {name:"Peanut", color:["#9FD6A6","#4FA85F"], age:{en:"~1 yr",ja:"約1歳"}, trait:{en:"Pure chaos",ja:"やんちゃ全開"}, triv:{en:"Youngest of the colony, into everything.",ja:"群れの末っ子、何にでも首を突っ込む。"}}
+];
+
+const CASES = [
+  {
+    cat:"Mochi", status:"open", color:["#FF8A6B","#E8433E"], raised:210, goal:420,
+    title:{en:"Mochi's dental treatment",ja:"モチの歯科治療"},
+    blurb:{en:"Mochi stopped eating properly and was pawing at her mouth. We trapped her for a vet check and found a cracked tooth that needs removing.",ja:"モチがうまく食べられず、口元を気にしていました。捕獲して診てもらうと、抜歯が必要な割れた歯が見つかりました。"},
+    story:{en:[
+      "A few of us noticed Mochi hanging back at feeding time and dropping dry food she normally wolfs down. On a closer look she was drooling a little and pawing at the side of her mouth.",
+      "We borrowed a trap, caught her on the second evening, and brought her in. The vet found a cracked lower canine with the start of an infection. It needs to come out, with antibiotics and a follow-up.",
+      "She's back in the estate recovering on soft food while we raise the rest. This is an ongoing case, not a one-off, so we'll keep this post updated as it goes."
+    ],ja:[
+      "数人が、普段はがつがつ食べるモチが給餌時に下がっていて、ドライフードを落とすのに気づきました。近くで見ると少しよだれを垂らし、口の片側を気にしていました。",
+      "わなを借りて2晩目に捕獲し、病院へ。下の犬歯が割れ、感染が始まっていました。抜歯と抗生剤、再診が必要です。",
+      "今は団地で柔らかいフードを食べながら回復中。残りを集めています。これは単発ではなく進行中のケースなので、経過をこの投稿で更新します。"
+    ]},
+    timeline:[
+      {d:"8 Nov", t:{en:"Noticed Mochi off her food and drooling.",ja:"モチが食欲を落とし、よだれを垂らしているのに気づく。"}},
+      {d:"10 Nov", t:{en:"Trapped and brought to the vet. Cracked canine found.",ja:"捕獲して通院。割れた犬歯が見つかる。"}},
+      {d:"10 Nov", t:{en:"Consult + X-ray done. Extraction scheduled.",ja:"診察とレントゲン。抜歯を予約。"}},
+      {d:{en:"Next",ja:"次回"}, t:{en:"Extraction + meds, then a follow-up check.",ja:"抜歯と投薬、その後に再診。"}}
+    ],
+    spend:[
+      {d:"10 Nov", item:{en:"Consultation",ja:"診察"}, amt:40},
+      {d:"10 Nov", item:{en:"Dental X-ray",ja:"歯科レントゲン"}, amt:70},
+      {d:"10 Nov", item:{en:"Soft food + antibiotics",ja:"柔らかいフード＋抗生剤"}, amt:35},
+      {d:{en:"Est.",ja:"見込み"}, item:{en:"Extraction + follow-up",ja:"抜歯＋再診"}, amt:275}
+    ]
+  },
+  {
+    cat:"Biscuit", status:"resolved", color:["#8FD6CC","#2E9A8C"], raised:60, goal:60,
+    title:{en:"Biscuit's sterilisation",ja:"ビスケットの不妊手術"},
+    blurb:{en:"Biscuit was sterilised and microchipped under the community programme. A clean, one-off case, now closed.",ja:"ビスケットは地域プログラムで不妊手術とマイクロチップを受けました。きれいに終わった単発のケースで、現在はクローズ。"},
+    story:{en:[
+      "Biscuit was the last unsterilised female in our stretch of the estate. We booked her in, she came through fine, and she's back to bullying the pigeons.",
+      "Chip registered, ear-tipped, done. Total came in at $60, covered by the pool."
+    ],ja:[
+      "ビスケットはこの一帯で最後の未手術のメスでした。予約して手術し、無事に戻って、また鳩を追い回しています。",
+      "チップ登録、耳カット済み。合計$60はプールから。"
+    ]},
+    timeline:[
+      {d:"22 Oct", t:{en:"Trapped and taken in for the procedure.",ja:"捕獲して手術へ。"}},
+      {d:"23 Oct", t:{en:"Sterilised, microchipped, ear-tipped.",ja:"不妊手術、チップ、耳カット。"}},
+      {d:"24 Oct", t:{en:"Recovered and returned to the estate.",ja:"回復して団地へ戻る。"}}
+    ],
+    spend:[
+      {d:"23 Oct", item:{en:"Sterilisation (subsidised)",ja:"不妊手術（補助あり）"}, amt:40},
+      {d:"23 Oct", item:{en:"Microchip",ja:"マイクロチップ"}, amt:20}
+    ]
+  }
+];
+
+let LEDGER = { raised:0, food:0, vet:0, pool:0, recent:[] };
+
+let POSTS = [
+  {img:["#FFB088","#FF7A6B"], caption:{en:"Mochi claiming the warmest spot again.",ja:"モチが今日もいちばん暖かい場所を占領。"}, date:"12 Nov", link:""},
+  {img:["#8FD6CC","#36A89A"], caption:{en:"Fresh water and breakfast for the morning crew.",ja:"朝組に新しいお水とごはん。"}, date:"10 Nov", link:""},
+  {img:["#C9B6F2","#8E7BD8"], caption:{en:"Biscuit finally let us scratch her chin.",ja:"ビスケットがやっと顎を触らせてくれた。"}, date:"8 Nov", link:""},
+  {img:["#F4C96B","#E89B2F"], caption:{en:"New collars arrived for the tag campaign.",ja:"首輪が届きました。タグ企画のぶん。"}, date:"5 Nov", link:""}
+];
+
+const SUPPORT = [
+  {price:4.20, name:{en:"Feed a cat for a day",ja:"猫1匹を1日"}, desc:{en:"A day of food for one cat: wet food, kibble and a Ciao Churu treat. The feeders do the feeding; it's logged with receipts.",ja:"猫1匹の1日ぶんの食費（ウェットフード、カリカリ、チャオちゅ〜る）。餌やりは世話人が行い、領収書で記録します。"}, campaign:false},
+  {price:30, name:{en:"Feed a cat for a week",ja:"猫1匹を1週間"}, desc:{en:"A week of food for one cat, about $4.20 a day: wet food, kibble and a Ciao Churu treat. The feeders do the feeding; logged with receipts.",ja:"猫1匹の1週間ぶんの食費（1日あたり約$4.20）。ウェットフード、カリカリ、チャオちゅ〜る込み。餌やりは世話人が行い、領収書で記録します。"}, campaign:false},
+  {price:48, name:{en:"Sponsor a tag + collar",ja:"タグと首輪をスポンサー"}, desc:{en:"Fund one tracker and a breakaway collar so a cat can be found if it wanders. A one-off goal.",ja:"迷ったときに見つけられるよう、1匹分のトラッカーと外れやすい首輪を賄います。単発の目標です。"}, campaign:true, campRaised:0, campGoal:576},
+  {price:null, name:{en:"Add to the pool",ja:"プールに寄付"}, desc:{en:"An open donation, used for food and vet bills wherever it's needed most.",ja:"使い道を限定しない寄付。必要なところへ餌代・病院代として充てます。"}, campaign:false}
+];
+
+const SPOTS = [
+  {name:"Beach Road Army Market & Food Centre", tag:{en:"Food",ja:"食べる"}, desc:{en:"Old-school army-gear stalls upstairs, a proper hawker centre below. Right in the estate.",ja:"上は払い下げ品の店、下は本格的なホーカーセンター。団地のすぐ中。"}, q:"Beach Road Market and Food Centre Singapore"},
+  {name:"Sembawang Bakery", tag:{en:"Food",ja:"食べる"}, desc:{en:"A neighbourhood bakery for a quick bite on the way through.",ja:"通りがかりに軽く食べられる地元のパン屋。"}, q:"Sembawang bakery Beach Road Singapore"},
+  {name:"The Projector", tag:{en:"Film",ja:"映画"}, desc:{en:"Beloved indie cinema up at Golden Mile Tower, a short stroll down Beach Road.",ja:"ゴールデンマイル・タワーにある人気のインディー映画館。ビーチロードを少し歩いた先。"}, q:"The Projector Golden Mile Tower Singapore"},
+  {name:"Raffles Hotel", tag:{en:"Heritage",ja:"歴史"}, desc:{en:"Singapore's grand colonial landmark and a national monument.",ja:"シンガポールを代表するコロニアル建築、国家記念物。"}, q:"Raffles Hotel Singapore"},
+  {name:"Hajjah Fatimah Mosque", tag:{en:"Heritage",ja:"歴史"}, desc:{en:"A graceful national-monument mosque just off Beach Road.",ja:"ビーチロードのすぐそばにある、国家記念物の優美なモスク。"}, q:"Hajjah Fatimah Mosque Singapore"},
+  {name:"Kampong Glam & Haji Lane", tag:{en:"Explore",ja:"散策"}, desc:{en:"Cafes, shops and street art a few minutes' walk away.",ja:"カフェ、店、ストリートアート。徒歩数分。"}, q:"Kampong Glam Singapore"}
+];
+
+const DO = [
+  {
+    bg:"color-mix(in srgb, var(--primary) 14%, var(--surface))", fg:"var(--primary-strong)",
+    svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11h17a8.5 8.5 0 0 1-17 0Z"/><path d="M12 11V7.5"/><path d="M9.2 7.5a2.8 2.8 0 0 1 5.6 0"/></svg>',
+    title:{en:"Feed them daily",ja:"毎日の餌やり"},
+    text:{en:"The estate's caretakers feed the colony every day, rain or shine.",ja:"団地の世話人が、毎日欠かさず群れに餌をあげています。"}
+  },
+  {
+    bg:"color-mix(in srgb, var(--accent) 16%, var(--surface))", fg:"var(--accent)",
+    svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.3C7 17 3.5 13.8 3.5 9.8A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 8.5 2.8c0 4-3.5 7.2-8.5 10.5Z"/></svg>',
+    title:{en:"Sterilise & treat",ja:"不妊手術と通院"},
+    text:{en:"We sterilise, microchip, and get cats to the vet when they need care.",ja:"不妊手術やマイクロチップ、必要なときの通院まで行います。"}
+  },
+  {
+    bg:"color-mix(in srgb, var(--warn) 18%, var(--surface))", fg:"var(--warn)",
+    svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.5c4-3.8 6.5-7 6.5-10.5a6.5 6.5 0 1 0-13 0c0 3.5 2.5 6.7 6.5 10.5Z"/><circle cx="12" cy="11" r="2.4"/></svg>',
+    title:{en:"Watch over them",ja:"見守り"},
+    text:{en:"Microchips and trackers on breakaway collars, so a cat can be found if it wanders.",ja:"マイクロチップと、外れやすい首輪のトラッカーで、迷っても見つけられるように。"}
+  }
+];
+
+let lang = "en";
+const $ = (s,el=document)=>el.querySelector(s);
+const money = n => (n<0?"-":"")+"$"+Math.abs(Number(n)).toLocaleString("en-SG");
+const tr = v => (v && typeof v==="object" && "en" in v) ? v[lang] : v;
+const t = k => UI[lang][k];
+const fundLabel = name => lang==="ja" ? (name+"の治療を支援") : ("Fund "+name+"'s care");
+
+function applyStatic(){
+  document.querySelectorAll("[data-i18n]").forEach(el=>{ el.textContent = t(el.dataset.i18n); });
+}
+
+function renderHero(){
+  const stats = [
+    {n: CONFIG.colonySize+"+", l:t("statCats")},
+    {n: money(LEDGER.raised), l:t("statRaised")}
+  ];
+  $("#heroStats").innerHTML = stats.map(s=>`<div class="stat"><div class="n tnum">${s.n}</div><div class="l">${s.l}</div></div>`).join("");
+}
+
+function catCard(c, dupe){
+  const style = c.photo
+    ? `background-image:url('${c.photo}'); background-size:cover; background-position:center`
+    : `background:linear-gradient(135deg,${c.color[0]},${c.color[1]})`;
+  const age = tr(c.age);
+  return `
+    <article class="cat"${dupe?' aria-hidden="true"':''}>
+      <div class="avatar" style="${style}">${c.photo?"":(c.name[0]||"")}</div>
+      <h3>${c.name} ${age?`<span class="age">${age}</span>`:""}</h3>
+      <div class="trait">${tr(c.trait)}</div>
+      <div class="triv">${tr(c.triv)}</div>
+    </article>`;
+}
+function renderCats(){
+  // Render the set twice so the shelf can loop seamlessly (second copy is hidden from screen readers).
+  $("#catGrid").innerHTML = CATS.map(c=>catCard(c,false)).join("") + CATS.map(c=>catCard(c,true)).join("");
+}
+
+function renderCases(){
+  $("#caseList").innerHTML = CASES.map((c,i)=>{
+    const pct = Math.min(100, Math.round(c.raised/c.goal*100));
+    const spendTotal = c.spend.reduce((a,b)=>a+b.amt,0);
+    const isOpen = c.status==="open";
+    return `
+    <article class="case">
+      <div class="case-top">
+        <div class="case-cover" style="background:linear-gradient(135deg,${c.color[0]},${c.color[1]})">${c.cat[0]}</div>
+        <div class="case-body">
+          <div class="row1">
+            <span class="chip ${isOpen?"open":"resolved"}"><span class="dot"></span>${isOpen?t("caseOpen"):t("caseResolved")}</span>
+            <span class="who">${c.cat}</span>
+          </div>
+          <h3>${tr(c.title)}</h3>
+          <p class="case-blurb">${tr(c.blurb)}</p>
+          <div class="progress"><span style="width:${pct}%"></span></div>
+          <div class="prog-meta tnum"><span>${money(c.raised)} ${t("raised")}</span><span class="muted">${t("goal")} ${money(c.goal)}</span></div>
+          <div class="case-actions">
+            <button class="btn btn-ghost btn-sm" data-toggle="${i}" aria-expanded="false">${t("readUpdate")}</button>
+            ${isOpen?`<a class="btn btn-primary btn-sm" href="#" data-demo>${fundLabel(c.cat)}</a>`:``}
+          </div>
+        </div>
+      </div>
+      <div class="case-full" id="full-${i}">
+        ${tr(c.story).map(p=>`<p>${p}</p>`).join("")}
+        <h4>${t("whatHappened")}</h4>
+        <ul class="timeline">${c.timeline.map(x=>`<li><div class="d">${tr(x.d)}</div>${tr(x.t)}</li>`).join("")}</ul>
+        <h4>${t("whatCost")}</h4>
+        <table class="spend">
+          <tbody>${c.spend.map(s=>`<tr><td class="muted">${tr(s.d)}</td><td>${tr(s.item)} <a href="#" data-demo class="muted" style="font-size:.82rem">${t("receipt")}</a></td><td class="amt tnum">${money(s.amt)}</td></tr>`).join("")}</tbody>
+          <tfoot><tr><td></td><td>${isOpen?t("totalEst"):t("total")}</td><td class="amt tnum">${money(spendTotal)}</td></tr></tfoot>
+        </table>
+      </div>
+    </article>`;
+  }).join("");
+}
+
+function bindCaseToggles(){
+  $("#caseList").addEventListener("click", e=>{
+    const b = e.target.closest("[data-toggle]");
+    if(!b) return;
+    const panel = $("#full-"+b.dataset.toggle);
+    const open = panel.classList.toggle("open");
+    b.setAttribute("aria-expanded", open);
+    b.textContent = open ? t("hideUpdate") : t("readUpdate");
+  });
+}
+
+function renderMoney(){
+  const food = LEDGER.food||0, vet = LEDGER.vet||0;
+  const splitTot = food+vet;
+  const spent = ("spent" in LEDGER) ? LEDGER.spent : splitTot;
+  const tiles = [
+    {k:t("tileRaised"), v:money(LEDGER.raised||0)},
+    {k:t("tileSpent"), v:money(spent)},
+    {k:t("tilePool"), v:money(LEDGER.pool||0), accent:true}
+  ];
+  $("#moneyTiles").innerHTML = tiles.map(x=>`<div class="tile ${x.accent?"accent":""}"><div class="k">${x.k}</div><div class="v tnum">${x.v}</div></div>`).join("");
+  const split = $(".split");
+  if(splitTot>0){
+    split.style.display="";
+    $("#barFood").style.width = (food/splitTot*100)+"%";
+    $("#barVet").style.width = (vet/splitTot*100)+"%";
+    $("#legFoodV").textContent = money(food);
+    $("#legVetV").textContent = money(vet);
+  } else {
+    split.style.display="none";
+  }
+  $("#recent").innerHTML = LEDGER.recent.length
+    ? LEDGER.recent.map(r=>`
+        <div class="r"><span class="d tnum">${r.d}</span><span>${tr(r.t)}</span>
+        <span class="a tnum" style="color:${r.a<0?"var(--ink)":"var(--ok)"}">${r.a<0?"−":"+"}${money(Math.abs(r.a))}</span></div>`).join("")
+    : `<div class="empty-ledger">${t("ledgerEmpty")}</div>`;
+  const link = CONFIG.ledgerUrl ? ` <a href="${CONFIG.ledgerUrl}" target="_blank" rel="noopener">${t("seeLedger")}</a>` : "";
+  $("#moneyNote").innerHTML = `${t("moneyNote")}${link}`;
+}
+
+function cardPrice(base){ return (base*1.029 + 0.30); }
+function renderSupport(){
+  $("#supportGrid").innerHTML = SUPPORT.map(o=>{
+    const priceLabel = o.price==null ? t("youChoose") : (Number.isInteger(o.price) ? money(o.price) : "$"+o.price.toFixed(2));
+    const fees = o.price==null ? "" :
+      `<div class="fees">
+        <div class="fee-row"><span>${t("payNow")}</span><b class="tnum">$${(o.price*1.0065).toFixed(2)}</b></div>
+        <div class="fee-row"><span>${t("card")}</span><b class="tnum">$${cardPrice(o.price).toFixed(2)}</b></div>
+        <div class="fee-note">${t("inclFee")}</div>
+      </div>`;
+    const camp = o.campaign ? (()=>{ const p=Math.round(o.campRaised/o.campGoal*100);
+      return `<div class="progress" style="margin-bottom:6px"><span style="width:${p}%"></span></div>
+      <div class="prog-meta tnum" style="margin-bottom:10px"><span>${money(o.campRaised)}</span><span class="muted">${t("campOf")} ${money(o.campGoal)}</span></div>`; })() : "";
+    return `<div class="opt ${o.campaign?"campaign":""}">
+      <h3>${tr(o.name)}</h3>
+      <div class="price tnum">${priceLabel}${o.alt?` <span class="muted" style="font-size:.9rem;font-weight:600">${tr(o.alt)}</span>`:""}</div>
+      <p>${tr(o.desc)}</p>
+      ${camp}${fees}
+      <a href="#" class="btn btn-primary" data-demo>${o.price==null?t("donate"):t("choose")}</a>
+    </div>`;
+  }).join("");
+}
+
+function renderDir(){
+  $("#dirGrid").innerHTML = SPOTS.map(s=>`
+    <article class="dir">
+      <span class="tag">${tr(s.tag)}</span>
+      <h3>${s.name}</h3>
+      <p>${tr(s.desc)}</p>
+      <a class="dirlink" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.q)}" target="_blank" rel="noopener">${t("getDirections")}</a>
+    </article>`).join("");
+}
+
+function renderFooter(){
+  const igIcon = `<svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>`;
+  const igA = CONFIG.igUrl
+    ? `<a class="foot-ig" href="${CONFIG.igUrl}" target="_blank" rel="noopener">${igIcon}${t("footIG")}</a>`
+    : `<a class="foot-ig" href="#" data-demo>${igIcon}${t("footIG")}</a>`;
+  const ledgerA = CONFIG.ledgerUrl
+    ? ` · <a href="${CONFIG.ledgerUrl}" target="_blank" rel="noopener">${t("footLedger")}</a>`
+    : "";
+  $("#footLinks").innerHTML = `<div>${igA}${ledgerA}</div>
+    <div style="margin-top:8px"><a href="contact.html">${t("footMsg")}</a> &nbsp;·&nbsp; <a href="privacy.html">${t("footPrivacy")}</a></div>`;
+}
+
+function renderAbout(){
+  const g = $("#aboutGrid"); if(!g) return;
+  g.innerHTML = DO.map(d=>`
+    <article class="about-card">
+      <div class="ic" style="background:${d.bg}; color:${d.fg}">${d.svg}</div>
+      <h3>${tr(d.title)}</h3>
+      <p>${tr(d.text)}</p>
+    </article>`).join("");
+}
+
+function renderLatest(){
+  const g = $("#latestGrid"); if(!g) return;
+  g.innerHTML = POSTS.slice(0,8).map(p=>{
+    const media = (typeof p.img==="string" && p.img)
+      ? `background-image:url('${p.img}'); background-size:cover; background-position:center`
+      : `background:linear-gradient(135deg,${(p.img&&p.img[0])||"#FFB088"},${(p.img&&p.img[1])||"#FF7A6B"})`;
+    const inner = `<div class="post-img" style="${media}"></div>
+      <div class="post-body"><p class="post-cap">${tr(p.caption)}</p>${p.date?`<div class="post-date tnum">${p.date}</div>`:""}</div>`;
+    return p.link
+      ? `<a class="post" href="${p.link}" target="_blank" rel="noopener">${inner}</a>`
+      : `<article class="post">${inner}</article>`;
+  }).join("");
+}
+
+// ── Live data from the Google Sheet (served by _worker.js at /api/data) ──
+const PALETTE = [["#FFB088","#FF7A6B"],["#F4C96B","#E89B2F"],["#C9B6F2","#8E7BD8"],["#FFC27A","#F08A3C"],["#AEB7C2","#6E7B8A"],["#9FD6A6","#4FA85F"],["#8FD6CC","#36A89A"],["#F7A8C4","#E86B9B"]];
+function colorFor(name){ let h=0; for(const ch of String(name)) h=(h*31+ch.charCodeAt(0))>>>0; return PALETTE[h%PALETTE.length]; }
+
+function parseCSV(text){
+  if(!text) return [];
+  const rows=[]; let row=[], field="", q=false;
+  for(let i=0;i<text.length;i++){
+    const c=text[i];
+    if(q){
+      if(c==='"'){ if(text[i+1]==='"'){ field+='"'; i++; } else q=false; }
+      else field+=c;
+    } else if(c==='"'){ q=true; }
+    else if(c===','){ row.push(field); field=""; }
+    else if(c==='\n'){ row.push(field); rows.push(row); row=[]; field=""; }
+    else if(c!=='\r'){ field+=c; }
+  }
+  if(field!=="" || row.length){ row.push(field); rows.push(row); }
+  if(!rows.length) return [];
+  const headers = rows[0].map(h=>h.trim());
+  return rows.slice(1)
+    .filter(r=>r.some(x=>x!==""))
+    .map(r=>{ const o={}; headers.forEach((h,idx)=>o[h]=(r[idx]||"").trim()); return o; });
+}
+
+function rowToCat(o){
+  const digits = String(o.age||"").replace(/[^0-9]/g,"");
+  return {
+    name: o.name||"",
+    photo: o.photo_url||"",
+    color: colorFor(o.name||"?"),
+    age: digits ? {en:"~"+digits+" yrs", ja:"約"+digits+"歳"} : {en:"",ja:""},
+    trait:{en:o.personality||"", ja:o.personality_ja||o.personality||""},
+    triv:{en:o.trivia||"", ja:o.trivia_ja||o.trivia||""},
+    status:(o.status||"").toLowerCase()
+  };
+}
+
+function rowToPost(o){
+  return {
+    img: o.image_url || colorFor(o.caption||o.date||"?"),
+    caption:{en:o.caption||"", ja:o.caption_ja||o.caption||""},
+    date:o.date||"",
+    link:o.link||""
+  };
+}
+
+function ledgerFrom(rows){
+  if(!rows.length) return null;
+  let raised=0, food=0, vet=0, other=0; const recent=[];
+  rows.forEach(o=>{
+    const amt = parseFloat(String(o.amount_sgd||"").replace(/[^0-9.\-]/g,"")) || 0;
+    if(!amt) return;
+    const dir = (o.direction||"").toLowerCase();
+    const cat = (o.category||"").toLowerCase();
+    const label = {en:o.description||"", ja:o.description_ja||o.description||""};
+    if(dir==="in"){ raised+=amt; recent.push({d:o.date||"", t:label, a:amt}); }
+    else { if(cat.includes("food")) food+=amt; else if(cat.includes("vet")) vet+=amt; else other+=amt; recent.push({d:o.date||"", t:label, a:-amt}); }
+  });
+  const spent = food+vet+other;
+  return { raised, spent, food, vet, pool: raised-spent, recent: recent.slice(-6).reverse() };
+}
+
+async function loadData(){
+  try{
+    const r = await fetch("/api/data", { cache:"no-store" });
+    if(!r.ok) return;
+    const j = await r.json();
+    const cats = parseCSV(j.cats).map(rowToCat).filter(c=>c.name && c.status!=="hidden" && c.status!=="gone");
+    if(cats.length) CATS = cats;
+    const L = ledgerFrom(parseCSV(j.ledger));
+    if(L) LEDGER = L;
+    const posts = parseCSV(j.posts||"").map(rowToPost).filter(p=>p.img||p.caption.en||p.caption.ja);
+    if(posts.length) POSTS = posts;
+    if(cats.length || L || posts.length) render();
+  }catch(_){ /* no worker (local preview) or sheet empty: keep the sample data */ }
+}
+
+function render(){
+  applyStatic(); renderHero(); renderAbout(); renderCats(); renderMoney(); renderSupport(); renderLatest(); renderFooter();
+  $("#toTop").setAttribute("aria-label", t("backTop"));
+  $("#navToggle").setAttribute("aria-label", t("menu"));
+  const cp=$("#catPrev"), cn=$("#catNext");
+  if(cp) cp.setAttribute("aria-label", t("prevCats"));
+  if(cn) cn.setAttribute("aria-label", t("nextCats"));
+  const sc=$(".scroll-cue"); if(sc) sc.setAttribute("aria-label", t("scrollDown"));
+  const fb=$("#followBtn");
+  if(fb){
+    if(CONFIG.igUrl){ fb.href=CONFIG.igUrl; fb.target="_blank"; fb.rel="noopener"; fb.removeAttribute("data-demo"); }
+    else { fb.href="#"; fb.setAttribute("data-demo",""); }
+  }
+}
+
+function setLang(l){
+  lang = l;
+  document.documentElement.setAttribute("lang", l);
+  document.querySelectorAll(".lang button").forEach(b=>{
+    const on = b.dataset.lang===l;
+    b.classList.toggle("on", on);
+    b.setAttribute("aria-pressed", on);
+  });
+  render();
+}
+
+let toastT;
+function toast(msg){
+  const el=$("#toast"); el.textContent=msg; el.classList.add("show");
+  clearTimeout(toastT); toastT=setTimeout(()=>el.classList.remove("show"),2600);
+}
+document.addEventListener("click", e=>{
+  const sh = e.target.closest("[data-share]");
+  if(sh){
+    e.preventDefault();
+    const url = location.href;
+    const text = lang==="ja" ? "Cats of Beach Road — ビーチロードの地域猫プロジェクト" : "Cats of Beach Road — community cats, cared for in the open.";
+    const u = encodeURIComponent(url), tx = encodeURIComponent(text);
+    const kind = sh.getAttribute("data-share");
+    if(kind==="x") window.open(`https://twitter.com/intent/tweet?text=${tx}&url=${u}`, "_blank", "noopener");
+    else if(kind==="wa") window.open(`https://wa.me/?text=${encodeURIComponent(text+" "+url)}`, "_blank", "noopener");
+    else if(kind==="ig"){
+      const done=()=>toast(t("shareCopied"));
+      if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done).catch(done);
+      else done();
+    }
+    return;
+  }
+  const d = e.target.closest("[data-demo]");
+  if(d){ e.preventDefault(); toast(t("toast")); return; }
+  const lb = e.target.closest(".lang button");
+  if(lb){ setLang(lb.dataset.lang); }
+});
+
+// Mobile hamburger menu
+const navToggle = $("#navToggle"), mobileMenu = $("#mobileMenu");
+function closeMenu(){ mobileMenu.classList.remove("open"); navToggle.setAttribute("aria-expanded","false"); navToggle.textContent="☰"; }
+navToggle.addEventListener("click", ()=>{
+  const open = mobileMenu.classList.toggle("open");
+  navToggle.setAttribute("aria-expanded", open);
+  navToggle.textContent = open ? "✕" : "☰";
+});
+mobileMenu.addEventListener("click", e=>{ if(e.target.closest("a")) closeMenu(); });
+// Tap the dimmed background (or empty menu space) to close, no need to hit the X.
+document.addEventListener("click", e=>{
+  if(!mobileMenu.classList.contains("open")) return;
+  if(e.target.closest("#navToggle")) return;
+  if(!e.target.closest("#mobileMenu") || !e.target.closest("a")) closeMenu();
+});
+
+// Back to top
+const toTop = $("#toTop");
+addEventListener("scroll", ()=>{ toTop.classList.toggle("show", scrollY>400); });
+toTop.addEventListener("click", ()=>scrollTo({top:0, behavior:"smooth"}));
+
+// Make images hard to drag or right-click-save (a deterrent, not real protection)
+addEventListener("contextmenu", e=>{ if(e.target.closest("img,.avatar,.pic,.case-cover")) e.preventDefault(); });
+addEventListener("dragstart", e=>{ if(e.target.closest("img,.avatar,.pic")) e.preventDefault(); });
+
+render();
+loadData();
+
+// Hero background video: only loads if you set CONFIG.heroVideo, otherwise the warm gradient shows.
+(function(){
+  const hero = document.getElementById("hero"), media = document.getElementById("heroMedia");
+  if(!hero || !media || !CONFIG.heroVideo) return;
+  const v = document.createElement("video");
+  v.src = CONFIG.heroVideo;
+  v.autoplay = true; v.loop = true; v.muted = true; v.playsInline = true;
+  v.setAttribute("muted",""); v.setAttribute("playsinline","");
+  if(CONFIG.heroPoster) v.poster = CONFIG.heroPoster;
+  media.appendChild(v);
+  hero.classList.add("has-media");
+  const p = v.play(); if(p && p.catch) p.catch(()=>{});
+})();
+
+// Cat carousel: the cards are joined in a loop behind the scenes, so it runs
+// forever in both directions with no visible jump back to the start. It drifts
+// gently on its own (stops on hover/touch/drag), and the arrows move it by about
+// one screenful. Works the same on desktop and mobile.
+(function(){
+  const track = document.getElementById("catGrid");
+  if(!track) return;
+  const viewport = track.parentElement;
+  const autoOk = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const speed = 0.4;
+  let offset = 0, paused = false, anim = null, resumeT;
+
+  function loopWidth(){                                           // exact width of one copy of the set
+    const kids = track.children, n = kids.length >> 1;
+    return (n && kids[n]) ? (kids[n].offsetLeft - kids[0].offsetLeft) : track.scrollWidth;
+  }
+  const mod = (a,n)=> ((a % n) + n) % n;                          // always-positive remainder = the circle
+  function apply(){
+    const w = loopWidth();
+    track.style.transform = "translateX(" + (w > 4 ? -mod(offset, w) : 0) + "px)";
+  }
+  function frame(now){
+    if(anim){
+      const t = Math.min(1, (now - anim.start) / anim.dur);
+      offset = anim.from + (anim.to - anim.from) * (1 - Math.pow(1 - t, 3));  // ease-out
+      if(t >= 1) anim = null;
+    } else if(!paused && autoOk){
+      offset += speed;
+    }
+    apply();
+    requestAnimationFrame(frame);
+  }
+  function hold(){ paused = true; clearTimeout(resumeT); resumeT = setTimeout(()=>{ paused = false; }, 1400); }
+  function go(px){
+    const from = anim ? anim.to : offset;                        // chain rapid presses smoothly
+    anim = { from: from, to: from + px, start: performance.now(), dur: 500 };
+    hold();
+  }
+  const page = ()=> Math.max(200, viewport.clientWidth - 16);    // about one screenful
+
+  viewport.addEventListener("pointerenter", ()=>{ paused = true; });
+  viewport.addEventListener("pointerleave", ()=>{ if(!anim && !dragging) paused = false; });
+  document.addEventListener("visibilitychange", ()=>{ if(document.hidden) paused = true; });
+
+  let dragging = false, lastX = 0;                               // drag / swipe
+  viewport.addEventListener("pointerdown", e=>{ dragging = true; lastX = e.clientX; paused = true; anim = null; try{ viewport.setPointerCapture(e.pointerId); }catch(_){} });
+  viewport.addEventListener("pointermove", e=>{ if(dragging){ offset -= (e.clientX - lastX); lastX = e.clientX; } });
+  const drop = ()=>{ if(dragging){ dragging = false; hold(); } };
+  viewport.addEventListener("pointerup", drop);
+  viewport.addEventListener("pointercancel", drop);
+
+  const prev = document.getElementById("catPrev"), next = document.getElementById("catNext");
+  if(prev) prev.addEventListener("click", ()=>go(-page()));
+  if(next) next.addEventListener("click", ()=>go(page()));
+
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
