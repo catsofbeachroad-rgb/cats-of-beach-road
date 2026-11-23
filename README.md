@@ -2,8 +2,7 @@
 
 Website for Cats of Beach Road, a community cat project for the cats of a Beach Road
 estate in Singapore. It is a static, bilingual (English / 日本語) site. Live at
-https://cats-of-beach-road.pages.dev (currently served from a temporary
-catsofbeachroad.pages.dev until the final URL is reclaimed).
+https://catsofbeachroad.pages.dev
 
 ## Hosting and deployment
 
