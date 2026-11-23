@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cats of Beach Road</title>
 <meta name="description" content="A community cat project on Beach Road, Singapore. We feed, chip and care for the estate's cats, and show exactly where every dollar goes." />
-<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="icon.png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Cats of Beach Road" />
@@ -145,8 +145,7 @@
   .foot-ig{display:inline-flex; align-items:center; gap:7px}
   .foot-ig .ico{flex:0 0 auto}
   .follow-band{text-align:center; background:color-mix(in srgb,var(--primary) 8%, var(--surface)); border-radius:var(--radius-lg); padding:40px 28px}
-  .follow-ic{width:60px; height:60px; border-radius:18px; display:grid; place-items:center; margin:0 auto 16px; background:linear-gradient(135deg,var(--primary),var(--accent)); color:#fff}
-  .follow-ic svg{width:30px; height:30px}
+  .follow-logo{width:66px; height:66px; border-radius:18px; display:block; margin:0 auto 16px; box-shadow:var(--shadow-sm)}
   .follow-band h2{font-size:clamp(1.4rem,3vw,1.9rem)}
   .follow-band p{color:var(--muted); max-width:44ch; margin:10px auto 20px}
   .share{margin-top:24px; display:flex; flex-direction:column; align-items:center; gap:10px}
@@ -155,7 +154,7 @@
   .sbtn{width:44px; height:44px; border-radius:50%; border:0; cursor:pointer; background:var(--surface); color:var(--ink); box-shadow:var(--shadow-sm); display:grid; place-items:center; transition:transform .12s ease, background .12s ease}
   .sbtn:hover{transform:translateY(-2px); background:var(--surface-2)}
   .sbtn svg{width:20px; height:20px}
-  .faq{max-width:760px}
+  .faq{max-width:none}
   .faq details{background:var(--surface); border-radius:var(--radius); box-shadow:var(--shadow-sm); margin-bottom:12px; overflow:hidden}
   .faq summary{list-style:none; cursor:pointer; padding:18px 20px; font-family:var(--font-display); font-weight:600; font-size:1.05rem; display:flex; justify-content:space-between; align-items:center; gap:14px}
   .faq summary::-webkit-details-marker{display:none}
@@ -170,7 +169,7 @@
   .post-cap{margin:0 0 8px; font-size:.95rem; line-height:1.45}
   .post-date{color:var(--muted); font-size:.82rem; font-weight:600}
   @media (max-width:860px){ .latest-grid{grid-template-columns:repeat(2,1fr)} }
-  @media (max-width:460px){ .latest-grid{grid-template-columns:1fr} }
+  @media (max-width:460px){ .latest-grid{grid-template-columns:repeat(2,1fr); gap:12px} }
 
   .feed-band{display:grid; grid-template-columns:1.6fr .9fr; gap:28px; align-items:center; background:color-mix(in srgb,var(--accent) 10%, var(--surface)); border-radius:var(--radius-lg); padding:30px 34px}
   .feed-band h2{font-size:clamp(1.5rem,3vw,2rem)}
@@ -183,8 +182,7 @@
   .feed-cta .btn{width:100%; justify-content:center}
   @media (max-width:760px){ .feed-band{grid-template-columns:1fr; padding:24px} }
 
-  .cat-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(230px,1fr)); gap:18px}
-  @media (max-width:560px){ .cat-grid{grid-template-columns:1fr 1fr; gap:12px} .cat .avatar{height:120px} }
+  .cat-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(210px,1fr)); gap:18px}
   .cat{background:var(--surface); border-radius:var(--radius); padding:12px; box-shadow:var(--shadow-sm)}
   .cat .avatar{height:150px; border-radius:14px; display:grid; place-items:center; font-family:var(--font-display); font-weight:700; font-size:2.3rem; color:#fff}
   .cat h3{font-size:1.15rem; margin-top:12px; display:flex; align-items:center; gap:8px; justify-content:space-between}
@@ -259,6 +257,12 @@
   .toast{position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(140%); opacity:0; visibility:hidden; pointer-events:none; background:var(--ink); color:var(--bg); padding:12px 20px; border-radius:999px; font-weight:600; box-shadow:var(--shadow); transition:transform .3s ease, opacity .3s ease, visibility .3s ease; z-index:90; max-width:90vw; text-align:center}
   .toast.show{transform:translateX(-50%) translateY(0); opacity:1; visibility:visible}
 
+  .visit-map{height:300px; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm); margin-bottom:20px}
+  .visit-map iframe{width:100%; height:100%; border:0; display:block}
+  .tabs{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px}
+  .tab{font-family:var(--font-display); font-weight:600; font-size:.95rem; border:0; cursor:pointer; padding:9px 17px; border-radius:999px; background:var(--surface-2); color:var(--muted); transition:background .12s, color .12s}
+  .tab:hover{background:var(--line)}
+  .tab.on{background:var(--primary); color:#fff}
   .dir-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:18px}
   .dir{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow-sm); display:flex; flex-direction:column}
   .dir .tag{align-self:flex-start; font-family:var(--font-display); font-weight:600; font-size:.74rem; padding:3px 10px; border-radius:999px; background:var(--surface-2); color:var(--muted); margin-bottom:10px}
@@ -277,7 +281,7 @@
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="brand" href="#top">
-      <svg class="paw" viewBox="0 0 48 48" aria-hidden="true"><g fill="var(--primary)"><ellipse cx="24" cy="31" rx="11" ry="9"/><circle cx="13" cy="19" r="4.3"/><circle cx="20" cy="13" r="4.3"/><circle cx="28" cy="13" r="4.3"/><circle cx="35" cy="19" r="4.3"/></g></svg>
+      <img class="paw" src="icon.png" alt="" width="28" height="28" style="border-radius:7px" />
       Cats of Beach Road
     </a>
     <nav class="nav-links">
@@ -285,6 +289,7 @@
       <a href="#cats" data-i18n="navCats">Cats</a>
       <a href="#feed" data-i18n="navFeed">Feed a cat</a>
       <a href="#money" data-i18n="navMoney">Where the money goes</a>
+      <a href="visit.html" data-i18n="navVisit">Visit</a>
     </nav>
     <div class="nav-right">
       <a href="#support" class="btn btn-primary btn-sm nav-cta" data-i18n="navSupport">Support the cats</a>
@@ -301,6 +306,7 @@
     <a href="#cats" data-i18n="navCats">Cats</a>
     <a href="#feed" data-i18n="navFeed">Feed a cat</a>
     <a href="#money" data-i18n="navMoney">Where the money goes</a>
+    <a href="visit.html" data-i18n="navVisit">Visit</a>
     <a href="#support" class="btn btn-primary" data-i18n="navSupport">Support the cats</a>
   </div>
 </header>
@@ -370,7 +376,13 @@
         <h2 data-i18n="catsTitle">Meet the cats</h2>
         <p data-i18n="catsIntro">Every cat has a name, an age and a personality.</p>
       </div>
-      <div class="cat-grid" id="catGrid"></div>
+      <div class="shelf-wrap">
+        <button class="shelf-btn prev" id="catPrev" aria-label="Previous">‹</button>
+        <div class="cat-viewport">
+          <div class="cat-track" id="catGrid"></div>
+        </div>
+        <button class="shelf-btn next" id="catNext" aria-label="Next">›</button>
+      </div>
     </div>
   </section>
 
@@ -418,7 +430,6 @@
             <span data-i18n="feedP4">Wipe</span>
           </div>
           <p data-i18n="feedNote">A lovely stop if you are visiting the neighbourhood. The cats are used to being fed, and most are friendly.</p>
-          <!-- TODO (later): add a "Some places we recommend" block here, a few nearby spots (hawker centre, cafes, things to see) for visitors who come to feed. -->
         </div>
         <div class="feed-cta">
           <div class="price tnum">$3</div>
@@ -428,6 +439,7 @@
       </div>
     </div>
   </section>
+
 </main>
 
   <section id="faq">
@@ -460,7 +472,7 @@
   <section id="follow">
     <div class="wrap">
       <div class="follow-band">
-        <div class="follow-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></div>
+        <img class="follow-logo" src="instagram.png" alt="Instagram" width="66" height="66" />
         <h2 data-i18n="followTitle">Follow us on Instagram</h2>
         <p data-i18n="followLead">Daily photos and little updates of the Beach Road cats. Come say hi.</p>
         <a id="followBtn" href="#" data-demo class="btn btn-primary" data-i18n="followBtn">Follow us</a>
@@ -479,7 +491,7 @@
 <footer>
   <div class="wrap foot-grid">
     <div>
-      <div class="brand" style="margin-bottom:8px"><svg class="paw" viewBox="0 0 48 48" aria-hidden="true"><g fill="var(--primary)"><ellipse cx="24" cy="31" rx="11" ry="9"/><circle cx="13" cy="19" r="4.3"/><circle cx="20" cy="13" r="4.3"/><circle cx="28" cy="13" r="4.3"/><circle cx="35" cy="19" r="4.3"/></g></svg> Cats of Beach Road</div>
+      <div class="brand" style="margin-bottom:8px"><img class="paw" src="icon.png" alt="" width="28" height="28" style="border-radius:7px" /> Cats of Beach Road</div>
     </div>
     <div id="footLinks"></div>
   </div>
@@ -531,8 +543,9 @@ const UI = {
     supportEyebrow:"Help out", supportTitle:"Pick a way to help",
     supportIntro:"These fund the cats' food, trackers and vet bills, and the feeders handle the feeding. PayNow is cheapest locally, cards work for everyone, and the fee is shown before you pay.",
     payNow:"PayNow", card:"Card", inclFee:"(incl. fee)", youChoose:"You choose", donate:"Donate", choose:"Choose", campOf:"of",
-    visitEyebrow:"While you're here", visitTitle:"Visit Beach Road",
-    visitIntro:"A few good spots in the neighbourhood. Tap a card for directions.", getDirections:"Get directions →",
+    visitEyebrow:"While you're here", visitTitle:"Near Beach Road",
+    visitIntro:"A few good spots to eat, pick up cat supplies, and explore while you're in the neighbourhood.", getDirections:"Open in Google Maps →",
+    visitTabEat:"Eat", visitTabPet:"Cat supplies", visitTabSee:"See & do",
     footRun:"Run at cost. After a few small listed costs, every dollar goes to the cats.",
     footIG:"Instagram", footLedger:"The full ledger", footQ:"Questions?", footMsg:"Message us",
     toast:"Demo — on the live site this opens HitPay or your real link."
@@ -578,8 +591,9 @@ const UI = {
     supportEyebrow:"手伝う", supportTitle:"支援の方法を選ぶ",
     supportIntro:"猫たちの餌・トラッカー・病院代にあてる支援です。餌やりは世話人が行います。地元の方にはPayNowが最安、カードは誰でも使えます。手数料は支払い前に表示します。",
     payNow:"PayNow", card:"カード", inclFee:"（手数料込み）", youChoose:"自由入力", donate:"寄付する", choose:"選ぶ", campOf:"／",
-    visitEyebrow:"せっかくなら", visitTitle:"ビーチロードを歩く",
-    visitIntro:"近隣のおすすめスポット。カードをタップで道順が開きます。", getDirections:"道順を見る →",
+    visitEyebrow:"せっかくなら", visitTitle:"周辺のおすすめ",
+    visitIntro:"近所に来たついでに。食事、猫の買い物、散策におすすめの場所。", getDirections:"Googleマップで開く →",
+    visitTabEat:"ご飯", visitTabPet:"猫の用品", visitTabSee:"散策",
     footRun:"原価で運営。わずかな明細費用のあと、すべて猫のために。",
     footIG:"Instagram", footLedger:"台帳をすべて見る", footQ:"ご質問は", footMsg:"お問い合わせ",
     toast:"デモ — 本番サイトではHitPayまたは実際のリンクが開きます。"
@@ -670,14 +684,6 @@ const SUPPORT = [
   {price:null, name:{en:"Add to the pool",ja:"プールに寄付"}, desc:{en:"An open donation, used for food and vet bills wherever it's needed most.",ja:"使い道を限定しない寄付。必要なところへ餌代・病院代として充てます。"}, campaign:false}
 ];
 
-const SPOTS = [
-  {name:"Beach Road Army Market & Food Centre", tag:{en:"Food",ja:"食べる"}, desc:{en:"Old-school army-gear stalls upstairs, a proper hawker centre below. Right in the estate.",ja:"上は払い下げ品の店、下は本格的なホーカーセンター。団地のすぐ中。"}, q:"Beach Road Market and Food Centre Singapore"},
-  {name:"Sembawang Bakery", tag:{en:"Food",ja:"食べる"}, desc:{en:"A neighbourhood bakery for a quick bite on the way through.",ja:"通りがかりに軽く食べられる地元のパン屋。"}, q:"Sembawang bakery Beach Road Singapore"},
-  {name:"The Projector", tag:{en:"Film",ja:"映画"}, desc:{en:"Beloved indie cinema up at Golden Mile Tower, a short stroll down Beach Road.",ja:"ゴールデンマイル・タワーにある人気のインディー映画館。ビーチロードを少し歩いた先。"}, q:"The Projector Golden Mile Tower Singapore"},
-  {name:"Raffles Hotel", tag:{en:"Heritage",ja:"歴史"}, desc:{en:"Singapore's grand colonial landmark and a national monument.",ja:"シンガポールを代表するコロニアル建築、国家記念物。"}, q:"Raffles Hotel Singapore"},
-  {name:"Hajjah Fatimah Mosque", tag:{en:"Heritage",ja:"歴史"}, desc:{en:"A graceful national-monument mosque just off Beach Road.",ja:"ビーチロードのすぐそばにある、国家記念物の優美なモスク。"}, q:"Hajjah Fatimah Mosque Singapore"},
-  {name:"Kampong Glam & Haji Lane", tag:{en:"Explore",ja:"散策"}, desc:{en:"Cafes, shops and street art a few minutes' walk away.",ja:"カフェ、店、ストリートアート。徒歩数分。"}, q:"Kampong Glam Singapore"}
-];
 
 const DO = [
   {
@@ -735,7 +741,8 @@ function catCard(c, dupe){
     </article>`;
 }
 function renderCats(){
-  $("#catGrid").innerHTML = CATS.map(c=>catCard(c,false)).join("");
+  // Render the set twice so the shelf can loop seamlessly (second copy hidden from screen readers).
+  $("#catGrid").innerHTML = CATS.map(c=>catCard(c,false)).join("") + CATS.map(c=>catCard(c,true)).join("");
 }
 
 function renderCases(){
@@ -839,18 +846,9 @@ function renderSupport(){
   }).join("");
 }
 
-function renderDir(){
-  $("#dirGrid").innerHTML = SPOTS.map(s=>`
-    <article class="dir">
-      <span class="tag">${tr(s.tag)}</span>
-      <h3>${s.name}</h3>
-      <p>${tr(s.desc)}</p>
-      <a class="dirlink" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.q)}" target="_blank" rel="noopener">${t("getDirections")}</a>
-    </article>`).join("");
-}
 
 function renderFooter(){
-  const igIcon = `<svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>`;
+  const igIcon = `<img class="ico" src="instagram.png" alt="" width="18" height="18" style="border-radius:5px;vertical-align:-3px" />`;
   const igA = CONFIG.igUrl
     ? `<a class="foot-ig" href="${CONFIG.igUrl}" target="_blank" rel="noopener">${igIcon}${t("footIG")}</a>`
     : `<a class="foot-ig" href="#" data-demo>${igIcon}${t("footIG")}</a>`;
@@ -873,7 +871,7 @@ function renderAbout(){
 
 function renderLatest(){
   const g = $("#latestGrid"); if(!g) return;
-  g.innerHTML = POSTS.slice(0,8).map(p=>{
+  g.innerHTML = POSTS.slice(0,4).map(p=>{
     const media = (typeof p.img==="string" && p.img)
       ? `background-image:url('${p.img}'); background-size:cover; background-position:center`
       : `background:linear-gradient(135deg,${(p.img&&p.img[0])||"#FFB088"},${(p.img&&p.img[1])||"#FF7A6B"})`;
@@ -1052,6 +1050,64 @@ document.addEventListener("click", e=>{
 const toTop = $("#toTop");
 addEventListener("scroll", ()=>{ toTop.classList.toggle("show", scrollY>400); });
 toTop.addEventListener("click", ()=>scrollTo({top:0, behavior:"smooth"}));
+
+// Cat carousel: the cards are joined in a loop behind the scenes, so it runs
+// forever in both directions with no visible jump back to the start. It drifts
+// gently on its own (stops on hover/touch/drag), and the arrows move it by about
+// one screenful. Works the same on desktop and mobile.
+(function(){
+  const track = document.getElementById("catGrid");
+  if(!track) return;
+  const viewport = track.parentElement;
+  const autoOk = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const speed = 0.4;
+  let offset = 0, paused = false, anim = null, resumeT;
+
+  function loopWidth(){
+    const kids = track.children, n = kids.length >> 1;
+    return (n && kids[n]) ? (kids[n].offsetLeft - kids[0].offsetLeft) : track.scrollWidth;
+  }
+  const mod = (a,n)=> ((a % n) + n) % n;
+  function apply(){
+    const w = loopWidth();
+    track.style.transform = "translateX(" + (w > 4 ? -mod(offset, w) : 0) + "px)";
+  }
+  function frame(now){
+    if(anim){
+      const t = Math.min(1, (now - anim.start) / anim.dur);
+      offset = anim.from + (anim.to - anim.from) * (1 - Math.pow(1 - t, 3));
+      if(t >= 1) anim = null;
+    } else if(!paused && autoOk){
+      offset += speed;
+    }
+    apply();
+    requestAnimationFrame(frame);
+  }
+  function hold(){ paused = true; clearTimeout(resumeT); resumeT = setTimeout(()=>{ paused = false; }, 1400); }
+  function go(px){
+    const from = anim ? anim.to : offset;
+    anim = { from: from, to: from + px, start: performance.now(), dur: 500 };
+    hold();
+  }
+  const page = ()=> Math.max(200, viewport.clientWidth - 16);
+
+  viewport.addEventListener("pointerenter", ()=>{ paused = true; });
+  viewport.addEventListener("pointerleave", ()=>{ if(!anim && !dragging) paused = false; });
+  document.addEventListener("visibilitychange", ()=>{ if(document.hidden) paused = true; });
+
+  let dragging = false, lastX = 0;
+  viewport.addEventListener("pointerdown", e=>{ dragging = true; lastX = e.clientX; paused = true; anim = null; try{ viewport.setPointerCapture(e.pointerId); }catch(_){} });
+  viewport.addEventListener("pointermove", e=>{ if(dragging){ offset -= (e.clientX - lastX); lastX = e.clientX; } });
+  const drop = ()=>{ if(dragging){ dragging = false; hold(); } };
+  viewport.addEventListener("pointerup", drop);
+  viewport.addEventListener("pointercancel", drop);
+
+  const prev = document.getElementById("catPrev"), next = document.getElementById("catNext");
+  if(prev) prev.addEventListener("click", ()=>go(-page()));
+  if(next) next.addEventListener("click", ()=>go(page()));
+
+  requestAnimationFrame(frame);
+})();
 
 // Make images hard to drag or right-click-save (a deterrent, not real protection)
 addEventListener("contextmenu", e=>{ if(e.target.closest("img,.avatar,.pic,.case-cover")) e.preventDefault(); });

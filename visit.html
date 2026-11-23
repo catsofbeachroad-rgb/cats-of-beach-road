@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Near Beach Road — Cats of Beach Road</title>
+<meta name="description" content="A few good spots to eat, pick up cat supplies, and explore near Beach Road, Singapore." />
+<link rel="icon" href="icon.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#FFF7F2; --surface:#FFFFFF; --surface-2:#FFF0E9; --ink:#2B2A33; --muted:#6F6A75; --line:#F1E4DC;
+    --primary:#FF5C57; --primary-strong:#E8433E; --accent:#14B4A4;
+    --radius:18px; --radius-lg:26px;
+    --shadow:0 10px 30px rgba(43,42,51,.08); --shadow-sm:0 4px 14px rgba(43,42,51,.07);
+    --font-display:"Fredoka", system-ui, sans-serif;
+    --font-body:"Nunito","Noto Sans JP", system-ui, -apple-system, sans-serif;
+    --maxw:1120px; color-scheme:light;
+  }
+  *{box-sizing:border-box} html,body{margin:0}
+  body{background:var(--bg); color:var(--ink); font-family:var(--font-body); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased}
+  :root[lang="ja"] body{font-family:"Noto Sans JP","Nunito",system-ui,sans-serif}
+  h1,h2{font-family:var(--font-display); font-weight:600; line-height:1.15; margin:0}
+  :root[lang="ja"] h1, :root[lang="ja"] h2{font-family:"Noto Sans JP","Fredoka",sans-serif; font-weight:700}
+  a{color:inherit}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+  header.nav{position:sticky; top:0; z-index:50; background:color-mix(in srgb,var(--bg) 86%,transparent); backdrop-filter:saturate(1.2) blur(10px); border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex; align-items:center; gap:16px; height:66px}
+  .brand{display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:700; font-size:1.1rem; text-decoration:none}
+  .brand .paw{width:28px; height:28px; flex:0 0 auto}
+  .nav-right{display:flex; align-items:center; gap:8px; margin-left:auto}
+  .lang{display:inline-flex; background:var(--surface-2); border-radius:999px; padding:3px}
+  .lang button{border:0; background:transparent; cursor:pointer; font-family:var(--font-display); font-weight:600; font-size:.85rem; color:var(--muted); padding:5px 10px; border-radius:999px; white-space:nowrap}
+  .lang button.on{background:var(--surface); color:var(--ink); box-shadow:var(--shadow-sm)}
+  main{padding:40px 0 10px}
+  .sec-head{margin-bottom:22px}
+  .sec-head h1{font-size:clamp(1.7rem,3.8vw,2.4rem)}
+  .sec-head p{color:var(--muted); margin:6px 0 0; max-width:60ch}
+  .visit-map{height:320px; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm); margin-bottom:20px}
+  .visit-map iframe{width:100%; height:100%; border:0; display:block}
+  .tabs{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px}
+  .tab{font-family:var(--font-display); font-weight:600; font-size:.95rem; border:0; cursor:pointer; padding:9px 17px; border-radius:999px; background:var(--surface-2); color:var(--muted); transition:background .12s, color .12s}
+  .tab:hover{background:var(--line)}
+  .tab.on{background:var(--primary); color:#fff}
+  .dir-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:18px}
+  .dir{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow-sm); display:flex; flex-direction:column}
+  .dir .tag{align-self:flex-start; font-family:var(--font-display); font-weight:600; font-size:.74rem; padding:3px 10px; border-radius:999px; background:var(--surface-2); color:var(--muted); margin-bottom:10px}
+  .dir h3{font-size:1.12rem}
+  .dir p{color:var(--muted); font-size:.95rem; margin:8px 0 14px}
+  .dir .dirlink{margin-top:auto; font-family:var(--font-display); font-weight:600; font-size:.95rem; color:var(--primary-strong); text-decoration:none; display:inline-flex; align-items:center; gap:6px}
+  .dir .dirlink:hover{text-decoration:underline}
+  footer{border-top:1px solid var(--line); margin-top:30px; padding:28px 0 46px; color:var(--muted)}
+  footer a{font-weight:600; color:var(--ink); text-decoration:none}
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important} }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">
+      <img class="paw" src="icon.png" alt="" width="28" height="28" style="border-radius:7px" />
+      Cats of Beach Road
+    </a>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="en" class="on" aria-pressed="true">EN</button>
+        <button data-lang="ja" aria-pressed="false">日本語</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="sec-head">
+      <h1 data-i18n="visitTitle">Near Beach Road</h1>
+      <p data-i18n="visitIntro">A few good spots to eat, pick up cat supplies, and explore while you're in the neighbourhood.</p>
+    </div>
+    <div class="visit-map">
+      <iframe loading="lazy" title="Map of the Beach Road area" src="https://maps.google.com/maps?q=Kampong%20Glam%20Beach%20Road%20Singapore&z=15&output=embed"></iframe>
+    </div>
+    <div class="tabs" id="visitTabs"></div>
+    <div class="dir-grid" id="dirGrid"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap"><a href="index.html" data-i18n="footHome">← Back to Cats of Beach Road</a></div>
+</footer>
+
+<script>
+const UI = {
+  en:{ visitTitle:"Near Beach Road", visitIntro:"A few good spots to eat, pick up cat supplies, and explore while you're in the neighbourhood.", tabEat:"Eat", tabPet:"Cat supplies", tabSee:"See & do", dir:"Open in Google Maps →", footHome:"← Back to Cats of Beach Road" },
+  ja:{ visitTitle:"周辺のおすすめ", visitIntro:"近所に来たついでに。食事、猫の買い物、散策におすすめの場所。", tabEat:"ご飯", tabPet:"猫の用品", tabSee:"散策", dir:"Googleマップで開く →", footHome:"← Cats of Beach Road に戻る" }
+};
+const SPOTS = [
+  {cat:"eat", name:"Golden Mile Food Centre", tag:{en:"Hawker",ja:"ホーカー"}, desc:{en:"Big hawker centre right on Beach Road. Cheap, with a huge variety of local food.",ja:"ビーチロード沿いの大きなホーカーセンター。安くて種類豊富なローカルフード。"}, q:"Golden Mile Food Centre Singapore"},
+  {cat:"eat", name:"Beach Road Army Market & Food Centre", tag:{en:"Hawker",ja:"ホーカー"}, desc:{en:"Army-gear stalls upstairs, a proper hawker centre below. Right in the estate.",ja:"上は払い下げ品の店、下は本格的なホーカーセンター。団地のすぐ中。"}, q:"Beach Road Market and Food Centre Singapore"},
+  {cat:"eat", name:"Kampong Glam Cafe", tag:{en:"Malay",ja:"マレー料理"}, desc:{en:"Classic Malay rice and teh tarik on Bussorah Street.",ja:"ブッソーラ通りの老舗マレー料理店。ごはんとテタレ。"}, q:"Kampong Glam Cafe Bussorah Street Singapore"},
+  {cat:"eat", name:"All Things Delicious", tag:{en:"Brunch",ja:"ブランチ"}, desc:{en:"Bakery and all-day brunch on Arab Street.",ja:"アラブ通りのベーカリー＆ブランチ。"}, q:"All Things Delicious Arab Street Singapore"},
+  {cat:"eat", name:"Earlybird", tag:{en:"Brunch",ja:"ブランチ"}, desc:{en:"Popular brunch spot; the outdoor seats are pet-friendly.",ja:"人気のブランチ店。屋外席はペット可。"}, q:"Earlybird Jalan Pinang Singapore"},
+  {cat:"pet", name:"Pet Lovers Centre (Bugis Junction)", tag:{en:"Pet shop",ja:"ペット用品"}, desc:{en:"Nearest pet store for cat food and litter, a short walk at Bugis Junction.",ja:"いちばん近いペットショップ。キャットフードや猫砂。ブギス・ジャンクション内、徒歩圏。"}, q:"Pet Lovers Centre Bugis Junction Singapore"},
+  {cat:"pet", name:"Pet Master Mega Store by CatSmart", tag:{en:"Pet shop",ja:"ペット用品"}, desc:{en:"Much bigger cat selection, further out at East Coast Park.",ja:"品揃えが豊富な大型店。少し離れたイーストコースト・パーク。"}, q:"Pet Master Mega Store CatSmart East Coast Park Singapore"},
+  {cat:"see", name:"Kampong Glam & Haji Lane", tag:{en:"Explore",ja:"散策"}, desc:{en:"Historic Malay quarter with murals, boutiques and the golden Sultan Mosque.",ja:"壁画やブティック、黄金のサルタンモスクがある歴史あるマレー人街。"}, q:"Kampong Glam Singapore"},
+  {cat:"see", name:"Bussorah Street", tag:{en:"Heritage",ja:"歴史"}, desc:{en:"Palm-lined pedestrian street with a classic Sultan Mosque view.",ja:"ヤシ並木の歩行者天国。サルタンモスクが望める。"}, q:"Bussorah Street Singapore"},
+  {cat:"see", name:"Hajjah Fatimah Mosque", tag:{en:"Heritage",ja:"歴史"}, desc:{en:"A graceful national-monument mosque just off Beach Road.",ja:"ビーチロードのすぐそばにある、国家記念物の優美なモスク。"}, q:"Hajjah Fatimah Mosque Singapore"},
+  {cat:"see", name:"The Projector", tag:{en:"Film",ja:"映画"}, desc:{en:"Beloved indie cinema at Golden Mile Tower, a short stroll down Beach Road.",ja:"ゴールデンマイル・タワーの人気インディー映画館。ビーチロードを少し歩いた先。"}, q:"The Projector Golden Mile Tower Singapore"},
+  {cat:"see", name:"Raffles Hotel", tag:{en:"Heritage",ja:"歴史"}, desc:{en:"Singapore's grand colonial landmark and a national monument.",ja:"シンガポールを代表するコロニアル建築、国家記念物。"}, q:"Raffles Hotel Singapore"}
+];
+
+let lang = "en", visitCat = "eat";
+const $ = (s,el=document)=>el.querySelector(s);
+const tr = v => (v && typeof v==="object" && "en" in v) ? v[lang] : v;
+const t = k => UI[lang][k];
+
+function applyStatic(){ document.querySelectorAll("[data-i18n]").forEach(el=>{ el.textContent = t(el.dataset.i18n); }); }
+function renderVisit(){
+  const cats = [["eat",t("tabEat")],["pet",t("tabPet")],["see",t("tabSee")]];
+  $("#visitTabs").innerHTML = cats.map(([k,l])=>`<button class="tab ${k===visitCat?"on":""}" data-cat="${k}">${l}</button>`).join("");
+  $("#dirGrid").innerHTML = SPOTS.filter(s=>s.cat===visitCat).map(s=>`
+    <article class="dir">
+      <span class="tag">${tr(s.tag)}</span>
+      <h3>${s.name}</h3>
+      <p>${tr(s.desc)}</p>
+      <a class="dirlink" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.q)}" target="_blank" rel="noopener">${t("dir")}</a>
+    </article>`).join("");
+}
+function render(){ applyStatic(); renderVisit(); }
+function setLang(l){
+  lang = l; document.documentElement.setAttribute("lang", l);
+  document.querySelectorAll(".lang button").forEach(b=>{ const on = b.dataset.lang===l; b.classList.toggle("on", on); b.setAttribute("aria-pressed", on); });
+  render();
+}
+document.addEventListener("click", e=>{
+  const tb = e.target.closest("#visitTabs .tab");
+  if(tb){ visitCat = tb.dataset.cat; renderVisit(); return; }
+  const lb = e.target.closest(".lang button");
+  if(lb){ setLang(lb.dataset.lang); }
+});
+render();
+</script>
+</body>
+</html>

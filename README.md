@@ -17,14 +17,17 @@ catsofbeachroad.pages.dev until the final URL is reclaimed).
 
 ## Files
 
-- `index.html`: the whole site (markup, styles and script in one file).
+- `index.html`: the homepage (markup, styles and script in one file).
+- `visit.html`: the "Near Beach Road" page (nearby places), linked from the nav.
+- `privacy.html`, `contact.html`: standalone pages.
 - `_worker.js`: a Cloudflare Pages function that reads the Google Sheet server-side
   and serves it at `/api/data`. A browser cannot read the Sheet directly because of
   CORS.
-- `privacy.html`, `contact.html`: standalone pages.
-- `favicon.svg`, `apple-touch-icon.png`: tab and home-screen icon (coral paw).
+- `icon.png`, `apple-touch-icon.png`: the logo used as the browser-tab and
+  home-screen icon.
+- `logo.png`: the full emblem logo used in the hero.
 - `og.png`: social-share image shown when the link is shared.
-- `logo.png`: the emblem logo used in the hero.
+- `instagram.png`: Instagram glyph used in the footer and the Follow section.
 - `photos/`: cat photos (see Photos below).
 
 ## Content comes from a Google Sheet
