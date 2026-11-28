@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Page not found - Cats of Beach Road</title>
+<meta name="robots" content="noindex" />
+<link rel="icon" href="/icon.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#FFF7F2; --surface:#FFFFFF; --surface-2:#FFF0E9; --ink:#2B2A33; --muted:#6F6A75; --line:#F1E4DC;
+    --primary:#FF5C57; --primary-strong:#E8433E;
+    --font-display:"Fredoka", system-ui, sans-serif;
+    --font-body:"Nunito","Noto Sans JP", system-ui, sans-serif;
+    color-scheme: light;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg); color:var(--ink); font-family:var(--font-body); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased; min-height:100vh; display:flex; flex-direction:column}
+  :lang(ja){font-family:"Noto Sans JP","Nunito",sans-serif}
+  .wrap{max-width:760px; margin:0 auto; padding:0 20px}
+  a{color:inherit}
+  .brand{display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:700; font-size:1.05rem; text-decoration:none; color:var(--ink)}
+  .brand .paw{width:26px; height:26px}
+  header{border-bottom:1px solid var(--line); background:var(--surface)}
+  header .wrap{display:flex; align-items:center; height:62px}
+  main{padding:56px 0 72px}
+  .eyebrow{font-family:var(--font-display); font-weight:600; letter-spacing:.04em; text-transform:uppercase; font-size:.78rem; color:var(--primary); margin:0 0 10px}
+  h1{font-family:var(--font-display); font-weight:700; font-size:clamp(1.8rem,4vw,2.4rem); line-height:1.2; margin:0 0 12px}
+  :lang(ja) h1{font-family:"Noto Sans JP","Fredoka",sans-serif}
+  .lede{color:var(--muted); margin:0 0 28px; max-width:42ch}
+  .btn{display:inline-flex; align-items:center; font-family:var(--font-display); font-weight:600; font-size:1rem; text-decoration:none; border-radius:999px; padding:12px 22px; background:var(--primary); color:#fff}
+  .btn:hover{background:var(--primary-strong)}
+  footer{border-top:1px solid var(--line); padding:24px 0 40px; color:var(--muted); font-size:.9rem; margin-top:auto}
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important} }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="/">
+      <img class="paw" src="/icon.png" alt="" width="28" height="28" style="border-radius:7px" />
+      Cats of Beach Road
+    </a>
+  </div>
+</header>
+
+<main id="not-found">
+  <div class="wrap">
+    <p class="eyebrow">404</p>
+    <h1>Page not found / ページが見つかりません</h1>
+    <p class="lede">That page isn't on this site.<br><span lang="ja">このサイトにそのページはありません。</span></p>
+    <a class="btn" href="/">Back to the homepage / ホームに戻る</a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">Cats of Beach Road</div>
+</footer>
+</body>
+</html>
