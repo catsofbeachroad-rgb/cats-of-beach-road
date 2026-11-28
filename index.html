@@ -241,6 +241,7 @@
   .recent .r .a{font-weight:700}
   .note{background:var(--surface-2); border-radius:14px; padding:12px 16px; color:var(--muted); font-size:.92rem; margin-top:18px}
   .empty-ledger{color:var(--muted); font-weight:600; padding:16px 6px}
+  .empty-cases{color:var(--muted); font-weight:600; margin:0}
   @media (max-width:640px){ .tiles{grid-template-columns:1fr} }
 
   .support-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:18px}
@@ -253,7 +254,6 @@
   .opt .fee-row b{font-weight:700; font-variant-numeric:tabular-nums}
   .opt .fee-note{color:var(--muted); font-size:.82rem; margin-top:2px}
   .opt .btn{margin-top:auto; justify-content:center}
-  .opt.campaign{background:color-mix(in srgb,var(--accent) 8%, var(--surface))}
   .toast{position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(140%); opacity:0; visibility:hidden; pointer-events:none; background:var(--ink); color:var(--bg); padding:12px 20px; border-radius:999px; font-weight:600; box-shadow:var(--shadow); transition:transform .3s ease, opacity .3s ease, visibility .3s ease; z-index:90; max-width:90vw; text-align:center}
   .toast.show{transform:translateX(-50%) translateY(0); opacity:1; visibility:visible}
 
@@ -362,7 +362,7 @@
       <div class="org-who">
         <div class="org-avatar" aria-hidden="true"><svg viewBox="0 0 48 48"><g fill="#fff"><ellipse cx="24" cy="31" rx="11" ry="9"/><circle cx="13" cy="19" r="4.3"/><circle cx="20" cy="13" r="4.3"/><circle cx="28" cy="13" r="4.3"/><circle cx="35" cy="19" r="4.3"/></g></svg></div>
         <div class="org-who-text">
-          <div class="org-name" data-i18n="orgName">[Your name]</div>
+          <div class="org-name" data-i18n="orgName">Run by neighbours in the estate</div>
           <div class="org-role" data-i18n="orgRole">Representative</div>
           <p data-i18n="orgWhoB">Cats of Beach Road is run by a small group of volunteers who live in the estate and already feed and look after these cats day to day.</p>
         </div>
@@ -382,6 +382,18 @@
           <div class="cat-track" id="catGrid"></div>
         </div>
         <button class="shelf-btn next" id="catNext" aria-label="Next">›</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-i18n="casesTitle">Open cases & updates</h2>
+        <p data-i18n="casesIntro">When a cat needs real care it becomes a case: a full update with the story, the costs, the receipts and what happens next. Open one to read it.</p>
+      </div>
+      <div class="cases" id="caseList">
+        <p class="empty-cases" data-i18n="casesEmpty">No open cases right now.</p>
       </div>
     </div>
   </section>
@@ -510,7 +522,7 @@ const UI = {
     orgMissionT:"Our mission", orgMissionB:"Make sure every cat on Beach Road is fed, healthy and safe, and run it openly so the whole neighbourhood can trust where the money goes.",
     orgVisionT:"Our vision", orgVisionB:"A neighbourhood where community cats are cared for by the people who live alongside them, not feared or chased away.",
     orgWhyT:"Why it matters", orgWhyB:"These cats live here whether or not anyone looks after them. Steady feeding, sterilisation and vet care mean fewer kittens, healthier cats and a calmer estate for everyone.",
-    orgName:"[Your name]", orgRole:"Representative", orgWhoB:"Cats of Beach Road is run by a small group of volunteers who live in the estate and already feed and look after these cats day to day.",
+    orgName:"Run by neighbours in the estate", orgRole:"Representative", orgWhoB:"Cats of Beach Road is run by a small group of volunteers who live in the estate and already feed and look after these cats day to day.",
     followTitle:"Follow us on Instagram", followLead:"Daily photos and little updates of the Beach Road cats. Come say hi.", followBtn:"Follow us",
     latestTitle:"Latest", latestIntro:"Recent photos and moments from the colony. More on Instagram.", footPrivacy:"Privacy policy",
     shareLabel:"Share this page", shareCopied:"Link copied. Paste it into your Instagram story or DM.",
@@ -531,6 +543,7 @@ const UI = {
     catsIntro:"Every cat has a name, an age and a personality. Profiles come straight from our sheet, so they stay up to date.",
     casesEyebrow:"Where the money goes", casesTitle:"Open cases & updates",
     casesIntro:"When a cat needs real care it becomes a case: a full update with the story, the costs, the receipts and what happens next. Open one to read it.",
+    casesEmpty:"No open cases right now.",
     caseOpen:"Open case", caseResolved:"Resolved", readUpdate:"Read the full update", hideUpdate:"Hide update",
     raised:"raised", goal:"goal", whatHappened:"What happened, step by step", whatCost:"What it cost",
     total:"Total", totalEst:"Total (incl. estimate)", receipt:"receipt",
@@ -542,7 +555,7 @@ const UI = {
     seeLedger:"See the full ledger →",
     supportEyebrow:"Help out", supportTitle:"Pick a way to help",
     supportIntro:"These fund the cats' food, trackers and vet bills, and the feeders handle the feeding. PayNow is cheapest locally, cards work for everyone, and the fee is shown before you pay.",
-    payNow:"PayNow", card:"Card", inclFee:"(incl. fee)", youChoose:"You choose", donate:"Donate", choose:"Choose", campOf:"of",
+    payNow:"PayNow", card:"Card", inclFee:"(incl. fee)", youChoose:"You choose", donate:"Donate", choose:"Choose",
     visitEyebrow:"While you're here", visitTitle:"Near Beach Road",
     visitIntro:"A few good spots to eat, pick up cat supplies, and explore while you're in the neighbourhood.", getDirections:"Open in Google Maps →",
     visitTabEat:"Eat", visitTabPet:"Cat supplies", visitTabSee:"See & do",
@@ -558,7 +571,7 @@ const UI = {
     orgMissionT:"ミッション", orgMissionB:"ビーチロードのすべての猫が、きちんと食べ、健康で、安全に暮らせるように。そして、お金の使い道を誰もが信頼できるよう、すべてオープンに運営します。",
     orgVisionT:"ビジョン", orgVisionB:"地域の猫たちが追い払われるのではなく、ともに暮らす人たちの手で大切にされる街へ。",
     orgWhyT:"活動の意義", orgWhyB:"この猫たちは、誰かが世話をしてもしなくても、ここで暮らし続けます。継続的な餌やり、不妊手術、通院によって、子猫は減り、猫は健康になり、みんなにとって穏やかな団地になります。",
-    orgName:"［お名前］", orgRole:"代表", orgWhoB:"Cats of Beach Road は、この団地に住み、日頃からこの猫たちの世話をしている有志の小さなグループで運営しています。",
+    orgName:"団地の住民有志が運営しています", orgRole:"代表", orgWhoB:"Cats of Beach Road は、この団地に住み、日頃からこの猫たちの世話をしている有志の小さなグループで運営しています。",
     followTitle:"Instagramでフォロー", followLead:"ビーチロードの猫たちの写真や近況を、ほぼ毎日投稿します。ぜひのぞいてください。", followBtn:"フォローする",
     latestTitle:"最近の様子", latestIntro:"群れの最近の写真と出来事。もっと見るならInstagramで。", footPrivacy:"プライバシーポリシー",
     shareLabel:"このページをシェア", shareCopied:"リンクをコピーしました。Instagramのストーリーやメッセージに貼り付けてください。",
@@ -579,6 +592,7 @@ const UI = {
     catsIntro:"どの猫にも名前、年齢、性格があります。プロフィールはシートから直接表示するので、常に最新です。",
     casesEyebrow:"お金の使い道", casesTitle:"進行中のケースと更新",
     casesIntro:"本格的なケアが必要になった猫は「ケース」になります。経緯、費用、領収書、次の予定をまとめて更新します。開いてご覧ください。",
+    casesEmpty:"現在進行中のケースはありません。",
     caseOpen:"進行中", caseResolved:"解決済み", readUpdate:"更新を読む", hideUpdate:"閉じる",
     raised:"集まった", goal:"目標", whatHappened:"これまでの経緯", whatCost:"かかった費用",
     total:"合計", totalEst:"合計（見込み含む）", receipt:"領収書",
@@ -590,7 +604,7 @@ const UI = {
     seeLedger:"台帳をすべて見る →",
     supportEyebrow:"手伝う", supportTitle:"支援の方法を選ぶ",
     supportIntro:"猫たちの餌・トラッカー・病院代にあてる支援です。餌やりは世話人が行います。地元の方にはPayNowが最安、カードは誰でも使えます。手数料は支払い前に表示します。",
-    payNow:"PayNow", card:"カード", inclFee:"（手数料込み）", youChoose:"自由入力", donate:"寄付する", choose:"選ぶ", campOf:"／",
+    payNow:"PayNow", card:"カード", inclFee:"（手数料込み）", youChoose:"自由入力", donate:"寄付する", choose:"選ぶ",
     visitEyebrow:"せっかくなら", visitTitle:"周辺のおすすめ",
     visitIntro:"近所に来たついでに。食事、猫の買い物、散策におすすめの場所。", getDirections:"Googleマップで開く →",
     visitTabEat:"ご飯", visitTabPet:"猫の用品", visitTabSee:"散策",
@@ -604,7 +618,7 @@ const UI = {
 const CONFIG = {
   colonySize: 20,   // how many cats you look after, shown as "20+"
   ledgerUrl: "",    // paste your view-only Google Sheet link here to turn on the "full ledger" link
-  igUrl: "",        // your Instagram link once it's ready
+  igUrl: "",        // leave empty until the account is live, then set https://www.instagram.com/catsofbeachroad/
   heroVideo: "",    // paste a hosted video URL (e.g. "hero.mp4") for a full-screen hero video
   heroPoster: "",   // optional still image shown before the video plays or if it can't
 };
@@ -618,55 +632,8 @@ let CATS = [
   {name:"Peanut", color:["#9FD6A6","#4FA85F"], age:{en:"~1 yr",ja:"約1歳"}, trait:{en:"Pure chaos",ja:"やんちゃ全開"}, triv:{en:"Youngest of the colony, into everything.",ja:"群れの末っ子、何にでも首を突っ込む。"}}
 ];
 
-const CASES = [
-  {
-    cat:"Mochi", status:"open", color:["#FF8A6B","#E8433E"], raised:210, goal:420,
-    title:{en:"Mochi's dental treatment",ja:"モチの歯科治療"},
-    blurb:{en:"Mochi stopped eating properly and was pawing at her mouth. We trapped her for a vet check and found a cracked tooth that needs removing.",ja:"モチがうまく食べられず、口元を気にしていました。捕獲して診てもらうと、抜歯が必要な割れた歯が見つかりました。"},
-    story:{en:[
-      "A few of us noticed Mochi hanging back at feeding time and dropping dry food she normally wolfs down. On a closer look she was drooling a little and pawing at the side of her mouth.",
-      "We borrowed a trap, caught her on the second evening, and brought her in. The vet found a cracked lower canine with the start of an infection. It needs to come out, with antibiotics and a follow-up.",
-      "She's back in the estate recovering on soft food while we raise the rest. This is an ongoing case, not a one-off, so we'll keep this post updated as it goes."
-    ],ja:[
-      "数人が、普段はがつがつ食べるモチが給餌時に下がっていて、ドライフードを落とすのに気づきました。近くで見ると少しよだれを垂らし、口の片側を気にしていました。",
-      "わなを借りて2晩目に捕獲し、病院へ。下の犬歯が割れ、感染が始まっていました。抜歯と抗生剤、再診が必要です。",
-      "今は団地で柔らかいフードを食べながら回復中。残りを集めています。これは単発ではなく進行中のケースなので、経過をこの投稿で更新します。"
-    ]},
-    timeline:[
-      {d:"8 Nov", t:{en:"Noticed Mochi off her food and drooling.",ja:"モチが食欲を落とし、よだれを垂らしているのに気づく。"}},
-      {d:"10 Nov", t:{en:"Trapped and brought to the vet. Cracked canine found.",ja:"捕獲して通院。割れた犬歯が見つかる。"}},
-      {d:"10 Nov", t:{en:"Consult + X-ray done. Extraction scheduled.",ja:"診察とレントゲン。抜歯を予約。"}},
-      {d:{en:"Next",ja:"次回"}, t:{en:"Extraction + meds, then a follow-up check.",ja:"抜歯と投薬、その後に再診。"}}
-    ],
-    spend:[
-      {d:"10 Nov", item:{en:"Consultation",ja:"診察"}, amt:40},
-      {d:"10 Nov", item:{en:"Dental X-ray",ja:"歯科レントゲン"}, amt:70},
-      {d:"10 Nov", item:{en:"Soft food + antibiotics",ja:"柔らかいフード＋抗生剤"}, amt:35},
-      {d:{en:"Est.",ja:"見込み"}, item:{en:"Extraction + follow-up",ja:"抜歯＋再診"}, amt:275}
-    ]
-  },
-  {
-    cat:"Biscuit", status:"resolved", color:["#8FD6CC","#2E9A8C"], raised:60, goal:60,
-    title:{en:"Biscuit's sterilisation",ja:"ビスケットの不妊手術"},
-    blurb:{en:"Biscuit was sterilised and microchipped under the community programme. A clean, one-off case, now closed.",ja:"ビスケットは地域プログラムで不妊手術とマイクロチップを受けました。きれいに終わった単発のケースで、現在はクローズ。"},
-    story:{en:[
-      "Biscuit was the last unsterilised female in our stretch of the estate. We booked her in, she came through fine, and she's back to bullying the pigeons.",
-      "Chip registered, ear-tipped, done. Total came in at $60, covered by the pool."
-    ],ja:[
-      "ビスケットはこの一帯で最後の未手術のメスでした。予約して手術し、無事に戻って、また鳩を追い回しています。",
-      "チップ登録、耳カット済み。合計$60はプールから。"
-    ]},
-    timeline:[
-      {d:"22 Oct", t:{en:"Trapped and taken in for the procedure.",ja:"捕獲して手術へ。"}},
-      {d:"23 Oct", t:{en:"Sterilised, microchipped, ear-tipped.",ja:"不妊手術、チップ、耳カット。"}},
-      {d:"24 Oct", t:{en:"Recovered and returned to the estate.",ja:"回復して団地へ戻る。"}}
-    ],
-    spend:[
-      {d:"23 Oct", item:{en:"Sterilisation (subsidised)",ja:"不妊手術（補助あり）"}, amt:40},
-      {d:"23 Oct", item:{en:"Microchip",ja:"マイクロチップ"}, amt:20}
-    ]
-  }
-];
+// Add a case object here when one should be published. An empty list shows the empty state.
+const CASES = [];
 
 let LEDGER = { raised:0, food:0, vet:0, pool:0, recent:[] };
 
@@ -678,10 +645,9 @@ let POSTS = [
 ];
 
 const SUPPORT = [
-  {price:4.20, name:{en:"Feed a cat for a day",ja:"猫1匹を1日"}, desc:{en:"A day of food for one cat: wet food, kibble and a Ciao Churu treat. The feeders do the feeding; it's logged with receipts.",ja:"猫1匹の1日ぶんの食費（ウェットフード、カリカリ、チャオちゅ〜る）。餌やりは世話人が行い、領収書で記録します。"}, campaign:false},
-  {price:30, name:{en:"Feed a cat for a week",ja:"猫1匹を1週間"}, desc:{en:"A week of food for one cat, about $4.20 a day: wet food, kibble and a Ciao Churu treat. The feeders do the feeding; logged with receipts.",ja:"猫1匹の1週間ぶんの食費（1日あたり約$4.20）。ウェットフード、カリカリ、チャオちゅ〜る込み。餌やりは世話人が行い、領収書で記録します。"}, campaign:false},
-  {price:48, name:{en:"Sponsor a tag + collar",ja:"タグと首輪をスポンサー"}, desc:{en:"Fund one tracker and a breakaway collar so a cat can be found if it wanders. A one-off goal.",ja:"迷ったときに見つけられるよう、1匹分のトラッカーと外れやすい首輪を賄います。単発の目標です。"}, campaign:true, campRaised:0, campGoal:576},
-  {price:null, name:{en:"Add to the pool",ja:"プールに寄付"}, desc:{en:"An open donation, used for food and vet bills wherever it's needed most.",ja:"使い道を限定しない寄付。必要なところへ餌代・病院代として充てます。"}, campaign:false}
+  {price:4.20, name:{en:"Feed a cat for a day",ja:"猫1匹を1日"}, desc:{en:"A day of food for one cat: wet food, kibble and a Ciao Churu treat. The feeders do the feeding; it's logged with receipts.",ja:"猫1匹の1日ぶんの食費（ウェットフード、カリカリ、チャオちゅ〜る）。餌やりは世話人が行い、領収書で記録します。"}},
+  {price:30, name:{en:"Feed a cat for a week",ja:"猫1匹を1週間"}, desc:{en:"A week of food for one cat, about $4.20 a day: wet food, kibble and a Ciao Churu treat. The feeders do the feeding; logged with receipts.",ja:"猫1匹の1週間ぶんの食費（1日あたり約$4.20）。ウェットフード、カリカリ、チャオちゅ〜る込み。餌やりは世話人が行い、領収書で記録します。"}},
+  {price:null, name:{en:"Add to the pool",ja:"プールに寄付"}, desc:{en:"An open donation, used for food and vet bills wherever it's needed most.",ja:"使い道を限定しない寄付。必要なところへ餌代・病院代として充てます。"}}
 ];
 
 
@@ -746,7 +712,13 @@ function renderCats(){
 }
 
 function renderCases(){
-  $("#caseList").innerHTML = CASES.map((c,i)=>{
+  const list = $("#caseList");
+  if(!list) return;
+  if(!CASES.length){
+    list.innerHTML = `<p class="empty-cases">${t("casesEmpty")}</p>`;
+    return;
+  }
+  list.innerHTML = CASES.map((c,i)=>{
     const pct = Math.min(100, Math.round(c.raised/c.goal*100));
     const spendTotal = c.spend.reduce((a,b)=>a+b.amt,0);
     const isOpen = c.status==="open";
@@ -784,7 +756,9 @@ function renderCases(){
 }
 
 function bindCaseToggles(){
-  $("#caseList").addEventListener("click", e=>{
+  const list = $("#caseList");
+  if(!list) return;
+  list.addEventListener("click", e=>{
     const b = e.target.closest("[data-toggle]");
     if(!b) return;
     const panel = $("#full-"+b.dataset.toggle);
@@ -833,14 +807,11 @@ function renderSupport(){
         <div class="fee-row"><span>${t("card")}</span><b class="tnum">$${cardPrice(o.price).toFixed(2)}</b></div>
         <div class="fee-note">${t("inclFee")}</div>
       </div>`;
-    const camp = o.campaign ? (()=>{ const p=Math.round(o.campRaised/o.campGoal*100);
-      return `<div class="progress" style="margin-bottom:6px"><span style="width:${p}%"></span></div>
-      <div class="prog-meta tnum" style="margin-bottom:10px"><span>${money(o.campRaised)}</span><span class="muted">${t("campOf")} ${money(o.campGoal)}</span></div>`; })() : "";
-    return `<div class="opt ${o.campaign?"campaign":""}">
+    return `<div class="opt">
       <h3>${tr(o.name)}</h3>
       <div class="price tnum">${priceLabel}${o.alt?` <span class="muted" style="font-size:.9rem;font-weight:600">${tr(o.alt)}</span>`:""}</div>
       <p>${tr(o.desc)}</p>
-      ${camp}${fees}
+      ${fees}
       <a href="#" class="btn btn-primary" data-demo>${o.price==null?t("donate"):t("choose")}</a>
     </div>`;
   }).join("");
@@ -909,7 +880,10 @@ function parseCSV(text, key){
   if(key){
     const k = key.toLowerCase();
     const found = rows.findIndex(r => r.some(c => c.trim().toLowerCase() === k));
-    if(found >= 0) hi = found;
+    // A missing column means this is not that tab. Google returns the first
+    // sheet (the instructions) when the requested tab does not exist.
+    if(found < 0) return [];
+    hi = found;
   }
   const headers = rows[hi].map(h=>h.trim());
   // If the date column header got instructions glued onto it, recover it.
@@ -923,13 +897,14 @@ function parseCSV(text, key){
 }
 
 function rowToCat(o){
-  const digits = String(o.age||"").replace(/[^0-9]/g,"");
+  const ageEn = String(o.age||"").trim();
+  const ageJa = String(o.age_ja||"").trim();
   return {
     name: o.name||"",
     name_ja: o.name_ja||"",
     photo: o.photo_url||"",
     color: colorFor(o.name||"?"),
-    age: digits ? {en:"~"+digits+" yrs", ja:"約"+digits+"歳"} : {en:"",ja:""},
+    age: {en: ageEn, ja: ageJa || ageEn},
     trait:{en:o.personality||"", ja:o.personality_ja||o.personality||""},
     triv:{en:o.trivia||"", ja:o.trivia_ja||o.trivia||""},
     status:(o.status||"").toLowerCase()
@@ -970,14 +945,18 @@ async function loadData(){
     if(cats.length) CATS = cats;
     const L = ledgerFrom(parseCSV(j.ledger, "direction"));
     if(L) LEDGER = L;
-    const posts = parseCSV(j.posts||"", "image_url").map(rowToPost).filter(p=>p.img||p.caption.en||p.caption.ja);
+    const posts = parseCSV(j.posts||"", "image_url").map(rowToPost).filter(p=>{
+      const caption = (p.caption && (p.caption.en || p.caption.ja)) || "";
+      const hasImage = typeof p.img === "string" && p.img.trim();
+      return !!(hasImage || String(caption).trim());
+    });
     if(posts.length) POSTS = posts;
     if(cats.length || L || posts.length) render();
   }catch(_){ /* no worker (local preview) or sheet empty: keep the sample data */ }
 }
 
 function render(){
-  applyStatic(); renderHero(); renderAbout(); renderCats(); renderMoney(); renderSupport(); renderLatest(); renderFooter();
+  applyStatic(); renderHero(); renderAbout(); renderCats(); renderCases(); renderMoney(); renderSupport(); renderLatest(); renderFooter();
   $("#toTop").setAttribute("aria-label", t("backTop"));
   $("#navToggle").setAttribute("aria-label", t("menu"));
   const cp=$("#catPrev"), cn=$("#catNext");
@@ -1114,6 +1093,7 @@ addEventListener("contextmenu", e=>{ if(e.target.closest("img,.avatar,.pic,.case
 addEventListener("dragstart", e=>{ if(e.target.closest("img,.avatar,.pic")) e.preventDefault(); });
 
 render();
+bindCaseToggles();
 loadData();
 
 // Hero background video: only loads if you set CONFIG.heroVideo, otherwise the warm gradient shows.
