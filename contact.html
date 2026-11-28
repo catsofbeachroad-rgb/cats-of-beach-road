@@ -34,6 +34,7 @@
   label{display:block; font-weight:600; font-size:.95rem}
   .req{color:var(--primary)}
   input, select, textarea{width:100%; margin-top:6px; font-family:var(--font-body); font-size:1rem; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:11px 13px}
+  .hidden{display:none !important}
   textarea{min-height:130px; resize:vertical}
   input:focus, select:focus, textarea:focus{outline:2px solid var(--primary); outline-offset:1px; border-color:var(--primary)}
   .agree{display:flex; align-items:flex-start; gap:10px; font-weight:500; font-size:.92rem; color:var(--muted)}
@@ -67,6 +68,8 @@
       <input type="hidden" name="access_key" value="YOUR-WEB3FORMS-KEY" />
       <input type="hidden" name="subject" value="Cats of Beach Road — new enquiry" />
       <input type="hidden" name="from_name" value="Cats of Beach Road website" />
+      <!-- Web3Forms honeypot. Hidden from humans and screen readers: https://docs.web3forms.com/getting-started/customizations/spam-protection/spam-protection -->
+      <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
       <div>
         <label for="f-name">Name / 氏名 <span class="req">*</span></label>
